@@ -1,0 +1,2 @@
+export const desciption: string =
+   'Los traders realizaran una búsqueda exhaustiva de muchos activos diariamente y posibilidades de entradas en los diferentes mercados (acciones, índices internacionales, materias primas, criptomonedas, NFT entre otros) buscando la mejor rentabilidad para incrementar el valor de nuestra moneda BTA y con esto lograr que todos nuestros holders (inversores) de nuestra moneda vean un potencial crecimiento en sus inversiones.';
