@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import {
    NavigationBar,
    LoginButton,
@@ -13,6 +12,7 @@ const Navbar = () => {
             <a
                href='https://cryptobta.com/wp-content/uploads/2022/03/Informacion-importante-para-el-usuario.pdf'
                target='_blank'
+               rel="noreferrer"
             >
                <AboutUs>ABOUT US</AboutUs>
             </a>

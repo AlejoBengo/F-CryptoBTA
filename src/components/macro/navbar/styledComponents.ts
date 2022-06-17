@@ -1,6 +1,6 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { AppBar, Container, Box } from '@mui/material';
+import { AppBar, Box } from '@mui/material';
 
 export const NavigationBar = styled(AppBar)(
    ({ theme }) => `

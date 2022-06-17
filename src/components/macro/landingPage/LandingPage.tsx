@@ -1,5 +1,4 @@
 /*IMPORT UTILITIES*/
-import { Link } from 'react-scroll';
 import { useState } from 'react';
 /*IMPORT COMPONENTS*/
 import Particle from '../../../particles/Particle';

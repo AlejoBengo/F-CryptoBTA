@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
 /*IMPORT CSS*/
-import { Box } from '@mui/material';
+// import { Box } from '@mui/material';
 import { AppContainer } from './utils/appStyledComponents';
 
 const App = () => {
