@@ -6,7 +6,7 @@ import {
    ButtonsBox,
 } from './styledComponents';
 
-const SearchBar = () => {
+const Navbar = () => {
    return (
       <NavigationBar>
          <ButtonsBox>
@@ -22,4 +22,4 @@ const SearchBar = () => {
    );
 };
 
-export default SearchBar;
+export default Navbar;

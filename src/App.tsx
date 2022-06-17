@@ -5,8 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import { createOptions } from './muiAssets/config';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 /*IMPORT COMPONENTS*/
-import Particle from './particles/Particle';
-import SearchBar from './components/macro/searchBar/SearchBar';
+import LandingPage from './components/macro/landingPage/LandingPage';
+import Navbar from './components/macro/navbar/Navbar';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 import { AppContainer } from './utils/appStyledComponents';
@@ -21,10 +21,10 @@ const App = () => {
 
    return (
       <ThemeProvider theme={theme}>
-         <SearchBar />
+         <Navbar />
          <AppContainer>
             <Routes>
-               <Route path='/' element={<Particle />} />
+               <Route path='/' element={<LandingPage />} />
             </Routes>
          </AppContainer>
       </ThemeProvider>
