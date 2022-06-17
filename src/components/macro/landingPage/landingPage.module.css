@@ -1,0 +1,9 @@
+.img {
+   width: 2rem;
+   margin-left: 2rem;
+   transition: 0.5s;
+}
+
+.img:hover {
+   width: 2.5rem;
+}
