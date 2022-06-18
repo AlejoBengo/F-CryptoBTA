@@ -1,9 +1,15 @@
 .img {
-   width: 2rem;
-   margin-left: 2rem;
+   width: 10vw;
    transition: 0.5s;
+   cursor: pointer;
 }
 
 .img:hover {
-   width: 2.5rem;
+   width: 11vw;
+}
+
+@media (max-width: 768px) {
+   .img {
+      width: 30vw;
+   }
 }

@@ -7,8 +7,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 /*IMPORT COMPONENTS*/
 import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
+import Login from './components/macro/session/login/Login';
 /*IMPORT CSS*/
-import { Box } from '@mui/material';
 import { AppContainer } from './utils/appStyledComponents';
 
 const App = () => {
@@ -25,6 +25,7 @@ const App = () => {
          <AppContainer>
             <Routes>
                <Route path='/' element={<LandingPage />} />
+               <Route path='/session' element={<Login />} />
             </Routes>
          </AppContainer>
       </ThemeProvider>

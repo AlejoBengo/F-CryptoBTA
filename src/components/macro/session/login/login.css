@@ -1,0 +1,22 @@
+.img {
+   width: 20rem;
+   height: 20rem;
+   animation: rotation 20s linear infinite;
+}
+
+@media (max-width: 768px) {
+   .img {
+      width: 13rem;
+      height: 13rem;
+      /* margin-top: 0rem; */
+   }
+}
+
+@keyframes rotation {
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(359deg);
+   }
+}

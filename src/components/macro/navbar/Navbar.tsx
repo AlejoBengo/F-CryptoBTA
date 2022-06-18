@@ -1,4 +1,6 @@
-import { Box } from '@mui/material';
+/*IMPORT UTILITIES*/
+import { Link } from 'react-router-dom';
+/*IMPORT CSS*/
 import {
    NavigationBar,
    LoginButton,
@@ -16,7 +18,9 @@ const Navbar = () => {
             >
                <AboutUs>ABOUT US</AboutUs>
             </a>
-            <LoginButton>ACCESS</LoginButton>
+            <Link to='session'>
+               <LoginButton>ACCESS</LoginButton>
+            </Link>
          </ButtonsBox>
       </NavigationBar>
    );

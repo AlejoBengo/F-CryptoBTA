@@ -199,7 +199,7 @@ export const ContactBox = styled(Box)`
 
 export const Form = styled(Box)`
    width: 32rem;
-   height: 75vh;
+   height: 65vh;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -234,16 +234,11 @@ export const ContactInput = styled('input')`
 
 export const ContactInputBox = styled(Box)`
    width: 80%;
-   height: 12rem;
+   height: 9rem;
    background-color: transparent;
    border: 0.15rem solid grey;
    color: white;
    word-wrap: break-word;
-
-   // @media (max-width: 768px) {
-   //    font-size: 1.1rem;
-   //    padding: 0.7rem;
-   // }
 `;
 
 export const ContactInput2 = styled('textarea')`
@@ -268,9 +263,16 @@ export const ContactInput2 = styled('textarea')`
    &::-webkit-scrollbar-thumb {
       background-color: white;
    }
+`;
 
-   // @media (max-width: 768px) {
-   //    font-size: 1.1rem;
-   //    padding: 0.7rem;
-   // }
+export const ImgBox = styled(Box)`
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 17rem;
+   width: 100vw;
+
+   @media (max-width: 768px) {
+      flex-wrap: wrap;
+   }
 `;

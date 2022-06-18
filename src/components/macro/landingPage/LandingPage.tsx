@@ -20,6 +20,7 @@ import {
    Title4,
    SubTitle,
    Text2,
+   ImgBox,
    ArrowDown,
    ArrowUp,
    ArrowRight,
@@ -82,26 +83,8 @@ const LandingPage = () => {
                <ArrowBox onClick={() => handleScrolling(2)}>
                   <ArrowDown />
                </ArrowBox>
-               <Box
-                  style={{
-                     width: '100%',
-                     paddingLeft: '2rem',
-                     height: '4rem',
-                     display: 'flex',
-                     alignItems: 'center',
-                     zIndex: '2',
-                  }}
-               >
-                  <img className={s.img} src={Youtube} alt='' />
-                  <img className={s.img} src={Facebook} alt='' />
-                  <img className={s.img} src={LinkedIn} alt='' />
-                  <img className={s.img} src={Twitter} alt='' />
-                  <img className={s.img} src={Twitch} alt='' />
-                  <img className={s.img} src={Spotify} alt='' />
-                  <img className={s.img} src={Instagram} alt='' />
-               </Box>
             </SubscribeBox>
-         ) : (
+         ) : view === 2 ? (
             <ContactBox>
                <ArrowBox onClick={() => handleScrolling(1)}>
                   <ArrowUp />
@@ -117,11 +100,61 @@ const LandingPage = () => {
                         placeholder='MESSAGE'
                      />
                   </ContactInputBox>
-                  <SendButton style={{ height: '2rem' }}>
-                     <ArrowRight style={{ fontSize: '1rem' }} />
+                  <SendButton
+                     style={{
+                        height: '2rem',
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
+                     }}
+                  >
+                     Send
                   </SendButton>
                </Form>
+
+               <ArrowBox onClick={() => handleScrolling(3)}>
+                  <ArrowDown />
+               </ArrowBox>
             </ContactBox>
+         ) : (
+            <Box
+               style={{
+                  position: 'absolute',
+                  zIndex: '2',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  width: '100vw',
+                  height: '88.5vh',
+               }}
+            >
+               <ArrowBox onClick={() => handleScrolling(2)}>
+                  <ArrowUp />
+               </ArrowBox>
+               <Title2>FOLLOW US</Title2>
+               <ImgBox>
+                  <Box>
+                     <a
+                        href='https://www.youtube.com/c/businessTargetAnalytic'
+                        target='_blank'
+                     >
+                        <img src={Youtube} alt='' className={s.img} />
+                     </a>
+                  </Box>
+                  <img src={Facebook} alt='' className={s.img} />
+                  <a href='https://twitter.com/academybta' target='_blank'>
+                     <img src={Twitter} alt='' className={s.img} />
+                  </a>
+                  <img src={Twitch} alt='' className={s.img} />
+                  <img src={Spotify} alt='' className={s.img} />
+                  <a
+                     href='https://www.instagram.com/crypto.bta/'
+                     target='_blank'
+                  >
+                     <img src={Instagram} alt='' className={s.img} />
+                  </a>
+                  <img src={LinkedIn} alt='' className={s.img} />
+               </ImgBox>
+            </Box>
          )}
          <Particle />
       </Box>

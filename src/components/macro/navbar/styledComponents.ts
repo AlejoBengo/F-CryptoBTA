@@ -1,6 +1,6 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { AppBar, Container, Box } from '@mui/material';
+import { AppBar, Box } from '@mui/material';
 
 export const NavigationBar = styled(AppBar)(
    ({ theme }) => `
@@ -32,7 +32,12 @@ export const LoginButton = styled('button')(
   background-color: #D8C945;
   color: black;
   border: 0.1rem solid #D8C945;
+  transition: 0.5s;
   cursor: pointer;
+
+  &:hover {
+    background-color: #EBDC53;
+  }
 `
 );
 
