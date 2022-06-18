@@ -63,9 +63,9 @@ const Login = () => {
          <Video muted autoPlay loop>
             <source src={VID} type='video/mp4' />
          </Video>
-         <Video2 muted autoPlay loop>
+         {/* <Video2 muted autoPlay loop>
             <source src={VID2} type='video/mp4' />
-         </Video2>
+         </Video2> */}
          <Filter></Filter>
          <RealContainer>
             <Form>

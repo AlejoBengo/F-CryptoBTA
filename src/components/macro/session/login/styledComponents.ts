@@ -22,7 +22,7 @@ export const Video = styled('video')(
 
     
    @media (max-width: 768px) {
-      display: none;
+      background-color: black;
    }
   `
 );
