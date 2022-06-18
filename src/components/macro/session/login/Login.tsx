@@ -98,16 +98,18 @@ const Login = () => {
                   <ArrowRight />
                </LoginButton>
             </Form>
-            <Box>
-               <Tilt
-                  tiltReverse={true}
-                  perspective={600}
-                  trackOnWindow={true}
-                  gyroscope={true}
-               >
-                  <img className='img' src={BTACoin} alt='' />
-               </Tilt>
-            </Box>
+            {BTACoin && (
+               <Box>
+                  <Tilt
+                     tiltReverse={true}
+                     perspective={600}
+                     trackOnWindow={true}
+                     gyroscope={true}
+                  >
+                     <img className='img' src={BTACoin} alt='' />
+                  </Tilt>
+               </Box>
+            )}
             <MiniTextBox>
                <MiniText>If you ain't have your account yet, </MiniText>
                <ContactWord onClick={handleGoToContact}>contact </ContactWord>
