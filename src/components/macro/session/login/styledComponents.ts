@@ -130,6 +130,8 @@ export const Input = styled('input')(
   background-color: transparent;
   font-size: 1rem;
   padding-left: 1rem;
+  height: 100%;
+  width: 90%;
   
  @media (max-width: 768px) {
    width: 85%;
