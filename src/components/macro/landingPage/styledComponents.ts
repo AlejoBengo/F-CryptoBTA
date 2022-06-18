@@ -276,3 +276,13 @@ export const ImgBox = styled(Box)`
       flex-wrap: wrap;
    }
 `;
+
+export const SocialMediaBox = styled(Box)`
+   display: flex;
+   align-items: center;
+   width: 100vw;
+   height: 88.5vh;
+   z-index: 2;
+   flex-direction: column;
+   position: absolute;
+`;

@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 /*IMPORT COMPONENTS*/
 import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
+import Redirector from './components/micro/redirector/Redirector';
 import Login from './components/macro/session/login/Login';
 /*IMPORT CSS*/
 import { AppContainer } from './utils/appStyledComponents';
@@ -24,7 +25,8 @@ const App = () => {
          <Navbar />
          <AppContainer>
             <Routes>
-               <Route path='/' element={<LandingPage />} />
+               <Route path='/' element={<Redirector />} />
+               <Route path='/:page' element={<LandingPage />} />
                <Route path='/session' element={<Login />} />
             </Routes>
          </AppContainer>

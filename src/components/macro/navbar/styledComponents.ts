@@ -30,6 +30,10 @@ export const BackButtonBox = styled(Box)(
    width: 20%;
    display: flex;
  justify-content: space-between;
+
+ @media (max-width: 768px) {
+   width: 67%;
+ }
 `
 );
 

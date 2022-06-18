@@ -1,21 +1,13 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Typography } from '@mui/material';
-import BTAName from '../../../../imagenes/BTAName2.jpg';
 
 export const Container = styled(Box)(
    ({ theme }) => `
    height: 88.5vh;
    position: relative;
    overflow: hidden;
-   
-   @media (max-width: 768px) {
-      background-color: black;
-      background-image: URL(${BTAName});
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position-y: 120%;
-   }
  `
 );
 
@@ -31,6 +23,22 @@ export const Video = styled('video')(
     
    @media (max-width: 768px) {
       display: none;
+   }
+  `
+);
+
+export const Video2 = styled('video')(
+   ({ theme }) => `
+   display: none;
+    
+   @media (max-width: 768px) {
+      display: flex;
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      object-fit: cover;
    }
   `
 );
@@ -65,7 +73,8 @@ export const RealContainer = styled(Box)(
    @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
-      height: 60vh;
+      height: 100%;
+      padding-top: 1rem;
       justify-content: flex-start;
    }
    `
@@ -87,7 +96,7 @@ export const Form = styled(Box)(
    @media (max-width: 768px) {
       margin-top: 0vh;
       width: 90%;
-      height: 30%;
+      height: 60%;
    }
     `
 );
@@ -99,7 +108,10 @@ export const Title = styled(Typography)(
   font-weight: 400;
 
   @media (max-width: 768px) {
-     display: none;
+   text-align: center;
+   text-justify: inter-word;
+   font-size: 3.5rem;
+
   }
    `
 );
@@ -115,10 +127,9 @@ export const InputBox = styled(Box)(
  padding-right: 0.5rem;
 
  @media (max-width: 768px) {
-  height: 30%;
+  height: 3rem;
   width: 85%;
  }
-
  `
 );
 
@@ -136,6 +147,61 @@ export const Input = styled('input')(
  @media (max-width: 768px) {
    width: 85%;
   }
-
   `
+);
+
+export const LoginButton = styled(Box)(
+   ({ theme }) => `
+  height: 2rem;
+ width: 6rem;
+
+ background-color: white;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ `
+);
+
+export const ArrowRight = styled(ArrowForwardIcon)`
+   color: black;
+   font-size: 1.5rem;
+`;
+
+export const MiniTextBox = styled(Box)(
+   ({ theme }) => `
+   display: flex;
+   width: 100%;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   }}
+ `
+);
+
+export const MiniText = styled(Typography)(
+   ({ theme }) => `
+  color: #D8C945;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+
+  @media (max-width: 768px) {
+   font-size: 0.8rem;
+  }
+   `
+);
+
+export const ContactWord = styled(Typography)(
+   ({ theme }) => `
+  color: #D8C945;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: underline;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+   font-size: 0.8rem;
+  }
+   `
 );

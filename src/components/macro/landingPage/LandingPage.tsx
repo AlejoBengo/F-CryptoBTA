@@ -1,6 +1,6 @@
 /*IMPORT UTILITIES*/
-import { Link } from 'react-scroll';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
 import Particle from '../../../particles/Particle';
 /*IMPORT CSS*/
@@ -29,6 +29,7 @@ import {
    InputBox,
    SendButton,
    ContactInput2,
+   SocialMediaBox,
    ContactInputBox,
    SubsInput,
    SubscribeBox,
@@ -42,11 +43,16 @@ import s from './landingPage.module.css';
 import { description, description2, contact } from './text';
 
 const LandingPage = () => {
+   const page = useParams();
    const [view, setView] = useState<number>(0);
 
    const handleScrolling = (int: number) => {
       setView(int);
    };
+
+   useEffect(() => {
+      setView(Number(page.page));
+   }, []);
 
    return (
       <Box>
@@ -66,7 +72,7 @@ const LandingPage = () => {
                <ArrowBox onClick={() => handleScrolling(0)}>
                   <ArrowUp />
                </ArrowBox>
-               <Title4>CRYPTOBTA IS COMING SOON</Title4>
+               <Title4>BTA PROTOCOL IS COMING SOON</Title4>
                <Text2>{description2}</Text2>
                <Text style={{ marginTop: '-3rem' }}>
                   BUSINESS TARGET ANALYTIC
@@ -116,17 +122,7 @@ const LandingPage = () => {
                </ArrowBox>
             </ContactBox>
          ) : (
-            <Box
-               style={{
-                  position: 'absolute',
-                  zIndex: '2',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  width: '100vw',
-                  height: '88.5vh',
-               }}
-            >
+            <SocialMediaBox>
                <ArrowBox onClick={() => handleScrolling(2)}>
                   <ArrowUp />
                </ArrowBox>
@@ -154,7 +150,7 @@ const LandingPage = () => {
                   </a>
                   <img src={LinkedIn} alt='' className={s.img} />
                </ImgBox>
-            </Box>
+            </SocialMediaBox>
          )}
          <Particle />
       </Box>
