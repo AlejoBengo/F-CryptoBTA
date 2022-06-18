@@ -25,6 +25,14 @@ export const ButtonsBox = styled(Box)(
 `
 );
 
+export const BackButtonBox = styled(Box)(
+   ({ theme }) => `
+   width: 20%;
+   display: flex;
+ justify-content: space-between;
+`
+);
+
 export const LoginButton = styled('button')(
    ({ theme }) => `
   width: 5rem;

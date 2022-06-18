@@ -95,7 +95,7 @@ export const Form = styled(Box)(
 export const Title = styled(Typography)(
    ({ theme }) => `
   color: #D8C945;
-  font-size: 2.5rem;
+  font-size: 3vw;
   font-weight: 400;
 
   @media (max-width: 768px) {
@@ -132,7 +132,7 @@ export const Input = styled('input')(
   padding-left: 1rem;
   height: 100%;
   width: 90%;
-  
+
  @media (max-width: 768px) {
    width: 85%;
   }
