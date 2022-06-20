@@ -5,13 +5,14 @@ import { useParams, Link } from 'react-router-dom';
 import Particle from '../../../particles/Particle';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
-import Youtube from '../../../imagenes/redes/Youtube.png';
 import Facebook from '../../../imagenes/redes/Facebook.png';
-import Twitter from '../../../imagenes/redes/Twitter.png';
-import Twitch from '../../../imagenes/redes/Twitch.png';
 import Instagram from '../../../imagenes/redes/Instagram.png';
 import LinkedIn from '../../../imagenes/redes/LinkedIn.png';
 import Spotify from '../../../imagenes/redes/Spotify.png';
+import Twitch from '../../../imagenes/redes/Twitch.png';
+import Twitter from '../../../imagenes/redes/Twitter.png';
+import Youtube from '../../../imagenes/redes/Youtube.png';
+import Telegram from '../../../imagenes/redes/Telegram.png';
 import {
    TextBox,
    Title,
