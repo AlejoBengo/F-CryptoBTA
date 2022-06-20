@@ -8,7 +8,7 @@ export const Container = styled(Box)`
    flex-direction: column;
    align-items: center;
    width: 100vw;
-   height: 88.5vh;
+   height: 100vh;
 `;
 
 export const SubContainer = styled(Box)`

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
 import Particle from '../../../particles/Particle';
+import ContactView from '../../micro/landingPage/ContactView/ContactView';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 import Youtube from '../../../imagenes/redes/Youtube.png';
@@ -12,52 +13,24 @@ import Twitch from '../../../imagenes/redes/Twitch.png';
 import Instagram from '../../../imagenes/redes/Instagram.png';
 import LinkedIn from '../../../imagenes/redes/LinkedIn.png';
 import Spotify from '../../../imagenes/redes/Spotify.png';
-import {
-   TextBox,
-   Title,
-   Title2,
-   Title3,
-   Title4,
-   SubTitle,
-   Text2,
-   ImgBox,
-   ArrowDown,
-   ArrowUp,
-   ArrowRight,
-   Text3,
-   ContactInput,
-   Title4_2,
-   InputBox,
-   SendButton,
-   ContactInput2,
-   SocialMediaBox,
-   ContactInputBox,
-   SubsInput,
-   SubscribeBox,
-   ArrowBox,
-   Form,
-   ContactBox,
-   Text,
-} from './styledComponents';
+import { Container } from './styledComponents';
 import s from './landingPage.module.css';
 /*IMPORT DATA*/
-import { description, description2, contact } from './text';
 
 const LandingPage = () => {
-   const page = useParams();
-   const [view, setView] = useState<number>(0);
-
-   const handleScrolling = (int: number) => {
-      setView(int);
-   };
-
-   useEffect(() => {
-      setView(Number(page.page));
-   }, []);
+   const page = useParams().page;
 
    return (
-      <Box>
-         {view === 0 ? (
+      <Container>
+         {page === 'contact' && <ContactView />}
+         <Particle />
+      </Container>
+   );
+};
+
+export default LandingPage;
+{
+   /* {view === 0 ? (
             <TextBox>
                <Title>BTA</Title>
                <Title3>PROTOCOL</Title3>
@@ -153,10 +126,5 @@ const LandingPage = () => {
                   <img src={LinkedIn} alt='' className={s.img} />
                </ImgBox>
             </SocialMediaBox>
-         )}
-         <Particle />
-      </Box>
-   );
-};
-
-export default LandingPage;
+         )} */
+}
