@@ -1,5 +1,6 @@
 /*IMPORT UTILITIES*/
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
 import Particle from '../../../particles/Particle';
 /*IMPORT CSS*/
@@ -19,14 +20,17 @@ import {
    Title4,
    SubTitle,
    Text2,
+   ImgBox,
    ArrowDown,
    ArrowUp,
    ArrowRight,
    Text3,
    ContactInput,
+   Title4_2,
    InputBox,
    SendButton,
    ContactInput2,
+   SocialMediaBox,
    ContactInputBox,
    SubsInput,
    SubscribeBox,
@@ -40,11 +44,16 @@ import s from './landingPage.module.css';
 import { description, description2, contact } from './text';
 
 const LandingPage = () => {
+   const page = useParams();
    const [view, setView] = useState<number>(0);
 
    const handleScrolling = (int: number) => {
       setView(int);
    };
+
+   useEffect(() => {
+      setView(Number(page.page));
+   }, []);
 
    return (
       <Box>
@@ -64,7 +73,8 @@ const LandingPage = () => {
                <ArrowBox onClick={() => handleScrolling(0)}>
                   <ArrowUp />
                </ArrowBox>
-               <Title4>CRYPTOBTA IS COMING SOON</Title4>
+               <Title4>BTA PROTOCOL</Title4>
+               <Title4_2>IS COMING SOON</Title4_2>
                <Text2>{description2}</Text2>
                <Text style={{ marginTop: '-3rem' }}>
                   BUSINESS TARGET ANALYTIC
@@ -81,26 +91,8 @@ const LandingPage = () => {
                <ArrowBox onClick={() => handleScrolling(2)}>
                   <ArrowDown />
                </ArrowBox>
-               <Box
-                  style={{
-                     width: '100%',
-                     paddingLeft: '2rem',
-                     height: '4rem',
-                     display: 'flex',
-                     alignItems: 'center',
-                     zIndex: '2',
-                  }}
-               >
-                  <img className={s.img} src={Youtube} alt='' />
-                  <img className={s.img} src={Facebook} alt='' />
-                  <img className={s.img} src={LinkedIn} alt='' />
-                  <img className={s.img} src={Twitter} alt='' />
-                  <img className={s.img} src={Twitch} alt='' />
-                  <img className={s.img} src={Spotify} alt='' />
-                  <img className={s.img} src={Instagram} alt='' />
-               </Box>
             </SubscribeBox>
-         ) : (
+         ) : view === 2 ? (
             <ContactBox>
                <ArrowBox onClick={() => handleScrolling(1)}>
                   <ArrowUp />
@@ -116,11 +108,51 @@ const LandingPage = () => {
                         placeholder='MESSAGE'
                      />
                   </ContactInputBox>
-                  <SendButton style={{ height: '2rem' }}>
-                     <ArrowRight style={{ fontSize: '1rem' }} />
+                  <SendButton
+                     style={{
+                        height: '2rem',
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
+                     }}
+                  >
+                     Send
                   </SendButton>
                </Form>
+
+               <ArrowBox onClick={() => handleScrolling(3)}>
+                  <ArrowDown />
+               </ArrowBox>
             </ContactBox>
+         ) : (
+            <SocialMediaBox>
+               <ArrowBox onClick={() => handleScrolling(2)}>
+                  <ArrowUp />
+               </ArrowBox>
+               <Title2>FOLLOW US</Title2>
+               <ImgBox>
+                  <Box>
+                     <a
+                        href='https://www.youtube.com/c/businessTargetAnalytic'
+                        target='_blank'
+                     >
+                        <img src={Youtube} alt='' className={s.img} />
+                     </a>
+                  </Box>
+                  <img src={Facebook} alt='' className={s.img} />
+                  <a href='https://twitter.com/academybta' target='_blank'>
+                     <img src={Twitter} alt='' className={s.img} />
+                  </a>
+                  <img src={Twitch} alt='' className={s.img} />
+                  <img src={Spotify} alt='' className={s.img} />
+                  <a
+                     href='https://www.instagram.com/crypto.bta/'
+                     target='_blank'
+                  >
+                     <img src={Instagram} alt='' className={s.img} />
+                  </a>
+                  <img src={LinkedIn} alt='' className={s.img} />
+               </ImgBox>
+            </SocialMediaBox>
          )}
          <Particle />
       </Box>

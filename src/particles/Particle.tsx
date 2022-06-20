@@ -21,7 +21,7 @@ const Particle = () => {
                trackOnWindow={true}
                gyroscope={true}
             >
-               <img src={BTALogo} alt='' />
+               <img className='BTAimg' src={BTALogo} alt='' />
             </Tilt>
             <Particles
                id='tsparticles'
