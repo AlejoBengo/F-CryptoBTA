@@ -26,6 +26,7 @@ import {
    ArrowRight,
    Text3,
    ContactInput,
+   Title4_2,
    InputBox,
    SendButton,
    ContactInput2,
@@ -72,7 +73,8 @@ const LandingPage = () => {
                <ArrowBox onClick={() => handleScrolling(0)}>
                   <ArrowUp />
                </ArrowBox>
-               <Title4>BTA PROTOCOL IS COMING SOON</Title4>
+               <Title4>BTA PROTOCOL</Title4>
+               <Title4_2>IS COMING SOON</Title4_2>
                <Text2>{description2}</Text2>
                <Text style={{ marginTop: '-3rem' }}>
                   BUSINESS TARGET ANALYTIC

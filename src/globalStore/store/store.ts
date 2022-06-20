@@ -1,10 +1,11 @@
 /*IMPORT UTILITIES*/
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 /*IMPORT REDUCERS*/
+import UserSlice from '../reducers/UserSlice/UserSlice';
 import MuiModeSlice from '../reducers/MuiModeSlice/MuiModeSlice';
 
 export const store = configureStore({
-   reducer: { MuiModeSlice },
+   reducer: { MuiModeSlice, UserSlice },
 });
 
 export type AppDispatch = typeof store.dispatch;

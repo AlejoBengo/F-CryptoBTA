@@ -131,7 +131,23 @@ export const Title4 = styled(Typography)`
    font-weight: 500;
 
    @media (max-width: 768px) {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      margin-left: 5%;
+      text-align: justify;
+      text-justify: inter-word;
+   }
+`;
+
+export const Title4_2 = styled(Typography)`
+   color: white;
+   z-index: 2;
+   font-size: 5.9vw;
+   font-family: Helvetica;
+   font-weight: 500;
+   margin-top: -3.5rem;
+
+   @media (max-width: 768px) {
+      font-size: 2.5rem;
       margin-left: 5%;
    }
 `;

@@ -1,14 +1,13 @@
-.img {
+.img1 {
    width: 20rem;
    height: 20rem;
    animation: rotation 20s linear infinite;
 }
 
 @media (max-width: 768px) {
-   .img {
+   .img1 {
       width: 13rem;
       height: 13rem;
-      /* margin-top: 0rem; */
    }
 }
 

@@ -8,7 +8,7 @@ section {
    align-items: center;
 }
 
-img {
+.BTAimg {
    width: 44vw;
    z-index: 1;
    opacity: 0.95;

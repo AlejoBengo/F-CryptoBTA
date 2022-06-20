@@ -1,13 +1,19 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
+import { Box, Typography, CircularProgress } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Box, Typography } from '@mui/material';
+import VelasImg from '../../../../imagenes/VelasIMG.jpg';
 
 export const Container = styled(Box)(
    ({ theme }) => `
    height: 88.5vh;
    position: relative;
    overflow: hidden;
+
+   @media (max-width: 768px) {
+      background-image: URL(${VelasImg});
+      background-size: cover;
+   }
  `
 );
 
@@ -19,30 +25,12 @@ export const Video = styled('video')(
     width: 100%; 
     height: 100%;
     object-fit: cover;
-
     
    @media (max-width: 768px) {
-      background-color: black;
+      display: none;
    }
   `
 );
-
-export const Video2 = styled('video')(
-   ({ theme }) => `
-   display: none;
-    
-   @media (max-width: 768px) {
-      display: flex;
-      position: absolute;
-      top: 0; 
-      left: 0;
-      width: 100%; 
-      height: 100%;
-      object-fit: cover;
-   }
-  `
-);
-
 export const Filter = styled(Box)(
    ({ theme }) => `
     position: absolute;
@@ -52,11 +40,6 @@ export const Filter = styled(Box)(
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     mix-blend-mode: overlay;
-
-    
-   @media (max-width: 768px) {
-      display: none;
-   }
   `
 );
 
@@ -154,7 +137,7 @@ export const LoginButton = styled(Box)(
    ({ theme }) => `
   height: 2rem;
  width: 6rem;
-
+cursor: pointer;
  background-color: white;
  display: flex;
  justify-content: center;
@@ -166,42 +149,3 @@ export const ArrowRight = styled(ArrowForwardIcon)`
    color: black;
    font-size: 1.5rem;
 `;
-
-export const MiniTextBox = styled(Box)(
-   ({ theme }) => `
-   display: flex;
-   width: 100%;
-   position: absolute;
-   left: 0;
-   bottom: 0;
-   }}
- `
-);
-
-export const MiniText = styled(Typography)(
-   ({ theme }) => `
-  color: #D8C945;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
-
-  @media (max-width: 768px) {
-   font-size: 0.8rem;
-  }
-   `
-);
-
-export const ContactWord = styled(Typography)(
-   ({ theme }) => `
-  color: #D8C945;
-  font-size: 1rem;
-  font-weight: 400;
-  text-decoration: underline;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-   font-size: 0.8rem;
-  }
-   `
-);
