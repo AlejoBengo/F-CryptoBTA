@@ -28,7 +28,6 @@ export const Title = styled(Typography)`
    color: white;
    z-index: 2;
    font-size: 4.5vw;
-   font-family: Helvetica;
    font-weight: 500;
 
    @media (max-width: 768px) {
@@ -39,7 +38,6 @@ export const Title = styled(Typography)`
 export const Text = styled(Typography)`
    color: white;
    font-size: 1.1vw;
-   font-family: Helvetica;
    padding: 1rem;
    text-align: center;
    text-justify: inter-word;
@@ -74,7 +72,6 @@ export const ContactInput2 = styled('textarea')`
    border: none;
    resize: none;
    font-size: 1.2rem;
-   font-family: Helvetica;
    padding-top: 0.4rem;
    padding-right: 0.4rem;
    padding-left: 1rem;

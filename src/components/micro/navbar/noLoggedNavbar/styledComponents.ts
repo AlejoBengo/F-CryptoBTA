@@ -1,6 +1,6 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { Box, Tab } from '@mui/material';
+import { Box, Tab, Menu } from '@mui/material';
 
 export const NavContainer = styled(Box)(
    ({ theme }) => `
@@ -74,5 +74,15 @@ export const ButtonsBox = styled(Box)(
  height: 2.5rem;
  display: flex;
  justify-content: space-between;
+`
+);
+
+export const A = styled('a')(
+   ({ theme }) => `
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
 `
 );
