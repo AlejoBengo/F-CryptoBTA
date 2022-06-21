@@ -7,8 +7,6 @@ import ContactView from '../../micro/landingPage/ContactView/ContactView';
 import Login from '../session/login/Login';
 /*IMPORT CSS*/
 import { Container, SubContainer } from './styledComponents';
-import { Box } from '@mui/material';
-/*IMPORT DATA*/
 
 const LandingPage = () => {
    const page = useParams().page;
