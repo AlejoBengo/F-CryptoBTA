@@ -12,8 +12,8 @@ export interface NewUserData {
    country: string;
    city: string;
    address: string;
-   postal_code: number;
-   phone_number: number;
+   postal_code: number|string;
+   phone_number: number|string;
    investment: string;
    total_investment: string;
    withdrawal_method: string;
