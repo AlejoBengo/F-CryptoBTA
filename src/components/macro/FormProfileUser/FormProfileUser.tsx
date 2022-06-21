@@ -8,7 +8,7 @@ import { ContainerEdit, InputBox, Input } from '../newUserForm/styledComponents'
 import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
 import config from '../newUserForm/textFieldConfig';
 
-const FormRegisterUser = () => {
+const FormProfileUser = () => {
    const [newUserData, setNewUserData] = useState<NewUserData>({
       _id: '',
       name: '',
@@ -149,4 +149,4 @@ const FormRegisterUser = () => {
    );
 };
 
-export default FormRegisterUser;
+export default FormProfileUser;

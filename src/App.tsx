@@ -11,7 +11,7 @@ import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
-import FormRegisterUser from './components/macro/FormRegisterUser/FormRegisterUser';
+import FormProfileUser from './components/macro/FormProfileUser/FormProfileUser'
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 
@@ -46,7 +46,7 @@ const App = () => {
                <Route path='/:page' element={<LandingPage />} />
                <Route path='/user/newuser' element={<NewUserForm />} />
                <Route path='/user/profile' element={<Profile />} />
-               <Route path='/user/register' element={<FormRegisterUser />} />
+               <Route path='/user/profileedit' element={<FormProfileUser />} />
             </Routes>
          </Box>
       </ThemeProvider>
