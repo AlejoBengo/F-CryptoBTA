@@ -9,6 +9,18 @@ export const Container = styled(Box)`
    display: flex;
    justify-content: space-around;
 `;
+export const ContainerEdit = styled(Box)`
+   background-color: black;
+   width: 100vw;
+   height: 88.5vh;
+   display: flex;
+   ustify-content: space-around;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-content: center;
+   align-items: center;
+   gap:15px
+`;
 
 export const InputBox = styled(Box)`
    display: flex;
