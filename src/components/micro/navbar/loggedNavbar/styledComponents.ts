@@ -1,20 +1,6 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { AppBar, Box, Avatar } from '@mui/material';
-
-export const NavigationBar = styled(AppBar)(
-   ({ theme }) => `
-   max-height: 11.5vh;
-   min-height: 11.5vh;
-   width: 100vw;
-   position: fixed;
-   background-color: black;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
- `
-);
+import { Box, Avatar } from '@mui/material';
 
 export const NavContainer = styled(Box)(
    ({ theme }) => `

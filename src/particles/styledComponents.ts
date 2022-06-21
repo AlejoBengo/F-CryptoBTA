@@ -4,19 +4,19 @@ import { styled } from '@mui/material/styles';
 
 export const Container = styled(Box)`
    background-color: black;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
    width: 100vw;
    height: 100vh;
+   position: absolute;
+   z-index: -1;
+   over-flow: hidden;
 `;
 
 export const SubContainer = styled(Box)`
    width: 100vw;
    height: 100vh;
-   background-color: black;
    display: flex;
    justify-content: center;
    align-items: center;
-   opacity: 0.4;
+   background-color: black;
+   opacity: 0.8;
 `;

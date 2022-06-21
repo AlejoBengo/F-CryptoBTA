@@ -9,7 +9,6 @@ import { setUserData } from './globalStore/reducers/UserSlice/UserSlice';
 /*IMPORT COMPONENTS*/
 import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
-import Login from './components/macro/session/login/Login';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
 /*IMPORT CSS*/
@@ -29,7 +28,7 @@ const App = () => {
          dispatch(setUserData(cookies.userInformation));
       }
       if (!userInformation.email.length && !cookies.userInformation) {
-         navigate('/0');
+         navigate('/');
       }
    }, [dispatch]);
 
@@ -42,11 +41,10 @@ const App = () => {
          <Navbar />
          <Box>
             <Routes>
+               <Route path='/' element={<LandingPage />} />
                <Route path='/:page' element={<LandingPage />} />
-               <Route path='/session' element={<Login />} />
-               <Route path='/dashboard' element={<h1>NO HAY NADA</h1>} />
-               <Route path='/dashboard/newuser' element={<NewUserForm />} />
-               <Route path='/dashboard/profile' element={<Profile />} />
+               <Route path='/user/newuser' element={<NewUserForm />} />
+               <Route path='/user/profile' element={<Profile />} />
             </Routes>
          </Box>
       </ThemeProvider>

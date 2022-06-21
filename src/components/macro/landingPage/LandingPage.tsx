@@ -4,17 +4,10 @@ import { useParams, Link } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
 import Particle from '../../../particles/Particle';
 import ContactView from '../../micro/landingPage/ContactView/ContactView';
+import Login from '../session/login/Login';
 /*IMPORT CSS*/
+import { Container, SubContainer } from './styledComponents';
 import { Box } from '@mui/material';
-import Youtube from '../../../imagenes/redes/Youtube.png';
-import Facebook from '../../../imagenes/redes/Facebook.png';
-import Twitter from '../../../imagenes/redes/Twitter.png';
-import Twitch from '../../../imagenes/redes/Twitch.png';
-import Instagram from '../../../imagenes/redes/Instagram.png';
-import LinkedIn from '../../../imagenes/redes/LinkedIn.png';
-import Spotify from '../../../imagenes/redes/Spotify.png';
-import { Container } from './styledComponents';
-import s from './landingPage.module.css';
 /*IMPORT DATA*/
 
 const LandingPage = () => {
@@ -22,109 +15,16 @@ const LandingPage = () => {
 
    return (
       <Container>
-         {page === 'contact' && <ContactView />}
          <Particle />
+         <SubContainer>
+            {page === 'contact' ? (
+               <ContactView />
+            ) : (
+               page === 'session' && <Login />
+            )}
+         </SubContainer>
       </Container>
    );
 };
 
 export default LandingPage;
-{
-   /* {view === 0 ? (
-            <TextBox>
-               <Title>BTA</Title>
-               <Title3>PROTOCOL</Title3>
-               <Title2>BUSINESS TARGET ANALYTIC</Title2>
-               <Text>{description}</Text>
-               <SubTitle>COMING SOON</SubTitle>
-               <ArrowBox onClick={() => handleScrolling(1)}>
-                  <ArrowDown />
-               </ArrowBox>
-            </TextBox>
-         ) : view === 1 ? (
-            <SubscribeBox>
-               <ArrowBox onClick={() => handleScrolling(0)}>
-                  <ArrowUp />
-               </ArrowBox>
-               <Title4>BTA PROTOCOL</Title4>
-               <Title4_2>IS COMING SOON</Title4_2>
-               <Text2>{description2}</Text2>
-               <Text style={{ marginTop: '-3rem' }}>
-                  BUSINESS TARGET ANALYTIC
-               </Text>
-               <InputBox>
-                  <SubsInput
-                     placeholder='Enter your email to subscribe!'
-                     autoComplete='false'
-                  />
-                  <SendButton>
-                     <ArrowRight />
-                  </SendButton>
-               </InputBox>
-               <ArrowBox onClick={() => handleScrolling(2)}>
-                  <ArrowDown />
-               </ArrowBox>
-            </SubscribeBox>
-         ) : view === 2 ? (
-            <ContactBox>
-               <ArrowBox onClick={() => handleScrolling(1)}>
-                  <ArrowUp />
-               </ArrowBox>
-               <Form>
-                  <Title2>CONTACT</Title2>
-                  <Text3>{contact}</Text3>
-                  <ContactInput autoComplete='false' placeholder='NAME' />
-                  <ContactInput autoComplete='false' placeholder='EMAIL' />
-                  <ContactInputBox>
-                     <ContactInput2
-                        autoComplete='false'
-                        placeholder='MESSAGE'
-                     />
-                  </ContactInputBox>
-                  <SendButton
-                     style={{
-                        height: '2rem',
-                        fontFamily: 'Helvetica',
-                        fontWeight: 'bold',
-                     }}
-                  >
-                     Send
-                  </SendButton>
-               </Form>
-
-               <ArrowBox onClick={() => handleScrolling(3)}>
-                  <ArrowDown />
-               </ArrowBox>
-            </ContactBox>
-         ) : (
-            <SocialMediaBox>
-               <ArrowBox onClick={() => handleScrolling(2)}>
-                  <ArrowUp />
-               </ArrowBox>
-               <Title2>FOLLOW US</Title2>
-               <ImgBox>
-                  <Box>
-                     <a
-                        href='https://www.youtube.com/c/businessTargetAnalytic'
-                        target='_blank'
-                     >
-                        <img src={Youtube} alt='' className={s.img} />
-                     </a>
-                  </Box>
-                  <img src={Facebook} alt='' className={s.img} />
-                  <a href='https://twitter.com/academybta' target='_blank'>
-                     <img src={Twitter} alt='' className={s.img} />
-                  </a>
-                  <img src={Twitch} alt='' className={s.img} />
-                  <img src={Spotify} alt='' className={s.img} />
-                  <a
-                     href='https://www.instagram.com/crypto.bta/'
-                     target='_blank'
-                  >
-                     <img src={Instagram} alt='' className={s.img} />
-                  </a>
-                  <img src={LinkedIn} alt='' className={s.img} />
-               </ImgBox>
-            </SocialMediaBox>
-         )} */
-}

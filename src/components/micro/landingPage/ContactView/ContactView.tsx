@@ -1,17 +1,15 @@
 import { useState } from 'react';
 
 import {
-   ContactBox,
-   ArrowBox,
-   ArrowUp,
    Form,
-   Title2,
-   Text3,
-   ContactInput,
+   Title,
+   Container,
+   Text,
    ContactInputBox,
+   ContactInput,
+   ArrowRight,
    ContactInput2,
    SendButton,
-   ArrowDown,
 } from './styledComponents';
 import { contact } from '../../../../utils/text';
 
@@ -23,26 +21,20 @@ const ContactView = () => {
    };
 
    return (
-      <ContactBox>
+      <Container>
          <Form>
-            <Title2>CONTACT</Title2>
-            <Text3>{contact}</Text3>
+            <Title>CONTACT</Title>
+            <Text>{contact}</Text>
             <ContactInput autoComplete='false' placeholder='NAME' />
             <ContactInput autoComplete='false' placeholder='EMAIL' />
             <ContactInputBox>
                <ContactInput2 autoComplete='false' placeholder='MESSAGE' />
             </ContactInputBox>
-            <SendButton
-               style={{
-                  height: '2rem',
-                  fontFamily: 'Helvetica',
-                  fontWeight: 'bold',
-               }}
-            >
-               Send
+            <SendButton>
+               <ArrowRight />
             </SendButton>
          </Form>
-      </ContactBox>
+      </Container>
    );
 };
 

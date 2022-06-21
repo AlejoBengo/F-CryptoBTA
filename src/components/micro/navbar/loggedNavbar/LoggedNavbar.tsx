@@ -4,11 +4,10 @@ import { useAppSelector } from '../../../../globalStore/store/hooks';
 import { useNavigate } from 'react-router-dom';
 /*IMPORT CSS*/
 import './navbar.css';
-import BTALogo from '../../../imagenes/BTAName.jpg';
-import { NavigationBar, NavContainer, Pic } from './styledComponents';
+import { NavContainer, Pic } from './styledComponents';
 import { Menu, MenuItem } from '@mui/material';
 
-const Navbar = () => {
+const LoggedNavbar = () => {
    const navigate = useNavigate();
    const userInformation = useAppSelector((state) => state.UserSlice);
 
@@ -28,15 +27,7 @@ const Navbar = () => {
             <MenuItem
                onClick={() => {
                   setSpace(null);
-                  navigate('/dashboard');
-               }}
-            >
-               Dashboard
-            </MenuItem>
-            <MenuItem
-               onClick={() => {
-                  setSpace(null);
-                  navigate('/dashboard/profile');
+                  navigate('/user/profile');
                }}
             >
                Profile
@@ -45,7 +36,7 @@ const Navbar = () => {
                <MenuItem
                   onClick={() => {
                      setSpace(null);
-                     navigate('/dashboard/newuser');
+                     navigate('/user/newuser');
                   }}
                >
                   Upload New Users
@@ -56,4 +47,4 @@ const Navbar = () => {
    );
 };
 
-export default Navbar;
+export default LoggedNavbar;

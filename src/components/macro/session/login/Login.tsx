@@ -88,7 +88,7 @@ const Login = () => {
                   setTimeout(() => {
                      setCharge(false);
                      setSuccessAlert(false);
-                     navigate('/dashboard');
+                     navigate('/user/profile');
                   }, 3000);
                } else {
                   setErrorAlert2(true);

@@ -1,14 +1,16 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { Box, Typography, CircularProgress } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import VelasImg from '../../../../imagenes/VelasIMG.jpg';
 
 export const Container = styled(Box)(
    ({ theme }) => `
-   height: 88.5vh;
+   height: 100vh;
    position: relative;
    overflow: hidden;
+   margin-top: -11.5vh;
+   background-color: black;
 
    @media (max-width: 768px) {
       background-image: URL(${VelasImg});
@@ -45,13 +47,12 @@ export const Filter = styled(Box)(
 
 export const RealContainer = styled(Box)(
    ({ theme }) => `
-   background-color: transparent;
-   position: absolute;
+    position: absolute;  
     width: 100vw;
-    height: 88.5vh;
+    height: 100vh;
     display: flex;
     justify-content: space-evenly;
-    padding-top: 10vh;
+    align-items: center;
     
    @media (max-width: 768px) {
       flex-direction: column;
@@ -74,7 +75,6 @@ export const Form = styled(Box)(
      align-items: center;
      justify-content: space-around;
      border-radius: 0.5rem;
-     margin-top: 10vh;
      
    @media (max-width: 768px) {
       margin-top: 0vh;
