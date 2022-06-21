@@ -1,6 +1,6 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { Box, Tab, Menu } from '@mui/material';
+import { Box, Tab } from '@mui/material';
 
 export const NavContainer = styled(Box)(
    ({ theme }) => `

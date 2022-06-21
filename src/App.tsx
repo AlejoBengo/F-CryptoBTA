@@ -12,15 +12,16 @@ import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
 /*IMPORT CSS*/
+import { NoAuthenticatedView } from './utils/appStyledComponents';
 import { Box } from '@mui/material';
 
 const App = () => {
    const navigate = useNavigate();
    const dispatch = useAppDispatch();
    const [cookies, setCookie, removeCookie] = useCookies();
-
    const userInformation = useAppSelector((state) => state.UserSlice);
    const muiTheme = useAppSelector((state) => state.MuiModeSlice.muiTheme);
+
    const [theme, setTheme] = useState(createTheme(createOptions(muiTheme)));
 
    useEffect(() => {
@@ -39,14 +40,12 @@ const App = () => {
    return (
       <ThemeProvider theme={theme}>
          <Navbar />
-         <Box>
-            <Routes>
-               <Route path='/' element={<LandingPage />} />
-               <Route path='/:page' element={<LandingPage />} />
-               <Route path='/user/newuser' element={<NewUserForm />} />
-               <Route path='/user/profile' element={<Profile />} />
-            </Routes>
-         </Box>
+         <Routes>
+            <Route path='/' element={<LandingPage />} />
+            <Route path='/:page' element={<LandingPage />} />
+            <Route path='/user/newuser' element={<NewUserForm />} />
+            <Route path='/user/profile' element={<Profile />} />
+         </Routes>
       </ThemeProvider>
    );
 };
