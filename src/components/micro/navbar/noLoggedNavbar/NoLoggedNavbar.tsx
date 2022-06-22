@@ -10,8 +10,12 @@ import {
    A,
    PasTab,
    SocialButton,
+   InsideButton,
+   Tablero,
+   LateralBox,
+   Dots,
 } from './styledComponents';
-import { Menu, Tabs } from '@mui/material';
+import { Menu, Drawer } from '@mui/material';
 import './noLogged.css';
 import Twitter from '../../../../imagenes/redes/Twitter.png';
 import Youtube from '../../../../imagenes/redes/Youtube.png';
@@ -21,14 +25,18 @@ import Telegram from '../../../../imagenes/redes/Telegram.png';
 const NoLoggedNavbar = () => {
    const navigate = useNavigate();
 
-   const [value, setValue] = useState(0);
+   const [value, setValue] = useState<number>(0);
    const [space, setSpace] = useState<null | HTMLElement>(null);
+   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       setSpace(event.currentTarget);
    };
    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
       setValue(newValue);
+   };
+   const handleOpenDrawer = () => {
+      setOpenDrawer(!openDrawer);
    };
    return (
       <NavContainer>
@@ -58,8 +66,45 @@ const NoLoggedNavbar = () => {
                <img className='telegram' src={Telegram} alt='' />
             </A>
          </Menu>
+         <Drawer anchor={'left'} open={openDrawer} onClose={handleOpenDrawer}>
+            <LateralBox>
+               <InsideButton
+                  onClick={() => {
+                     navigate('/');
+                     handleOpenDrawer();
+                  }}
+               >
+                  BTA
+               </InsideButton>
+               <InsideButton
+                  onClick={() => {
+                     navigate('/dashboard');
+                     handleOpenDrawer();
+                  }}
+               >
+                  DASHBOARD
+               </InsideButton>
+               <InsideButton
+                  onClick={() => {
+                     navigate('/contact');
+                     handleOpenDrawer();
+                  }}
+               >
+                  CONTACT
+               </InsideButton>
+               <InsideButton
+                  onClick={() => {
+                     navigate('/session');
+                     handleOpenDrawer();
+                  }}
+               >
+                  ACCESS
+               </InsideButton>
+            </LateralBox>
+         </Drawer>
          <ButtonsBox>
-            <SocialButton onClick={handleClick}>FOLLOW</SocialButton>
+            <Dots onClick={handleOpenDrawer} />
+            <SocialButton onClick={handleClick}>FOLLOW US</SocialButton>
             <a
                href='https://cryptobta.com/wp-content/uploads/2022/03/Informacion-importante-para-el-usuario.pdf'
                target='_blank'
@@ -67,7 +112,7 @@ const NoLoggedNavbar = () => {
                <AboutUs>ABOUT US</AboutUs>
             </a>
          </ButtonsBox>
-         <Tabs value={value} onChange={handleChange}>
+         <Tablero value={value} onChange={handleChange}>
             {value === 0 ? (
                <FullTab label='BTA' onClick={() => navigate('/')} />
             ) : (
@@ -95,7 +140,7 @@ const NoLoggedNavbar = () => {
             ) : (
                <PasTab label='ACCESS' onClick={() => navigate('/session')} />
             )}
-         </Tabs>
+         </Tablero>
       </NavContainer>
    );
 };

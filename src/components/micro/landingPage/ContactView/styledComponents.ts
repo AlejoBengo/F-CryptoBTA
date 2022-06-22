@@ -41,6 +41,10 @@ export const Text = styled(Typography)`
    padding: 1rem;
    text-align: center;
    text-justify: inter-word;
+
+   @media (max-width: 768px) {
+      font-size: 5vw;
+   }
 `;
 
 export const ContactInput = styled('input')`
@@ -52,6 +56,10 @@ export const ContactInput = styled('input')`
    border: 0.15rem solid white;
    padding-left: 1rem;
    color: white;
+
+   @media (max-width: 768px) {
+      font-size: 5vw;
+   }
 `;
 
 export const ContactInputBox = styled(Box)`
@@ -77,6 +85,10 @@ export const ContactInput2 = styled('textarea')`
    padding-left: 1rem;
    word-break: break-word;
 
+   @media (max-width: 768px) {
+      font-size: 5vw;
+   }
+
    &::-webkit-scrollbar {
       width: 0.5rem;
       background-color: black;
@@ -95,9 +107,17 @@ export const SendButton = styled(Box)`
    display: flex;
    justify-content: center;
    align-items: center;
+
+   @media (max-width: 768px) {
+      width: 40%;
+   }
 `;
 
 export const ArrowRight = styled(ArrowRightAltIcon)`
    color: black;
    font-size: 2vw;
+
+   @media (max-width: 768px) {
+      font-size: 8vw;
+   }
 `;

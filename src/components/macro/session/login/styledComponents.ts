@@ -10,7 +10,7 @@ export const Container = styled(Box)(
    position: relative;
    overflow: hidden;
    margin-top: -11.5vh;
-   background-color: black;
+   background-color: black; 
 
    @media (max-width: 768px) {
       background-image: URL(${VelasImg});
@@ -77,7 +77,7 @@ export const Form = styled(Box)(
      border-radius: 0.5rem;
      
    @media (max-width: 768px) {
-      margin-top: 0vh;
+      margin-top: 11.5vh;
       width: 90%;
       height: 60%;
    }

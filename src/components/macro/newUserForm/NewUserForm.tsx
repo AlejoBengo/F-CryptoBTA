@@ -2,11 +2,19 @@
 import { useState } from 'react';
 import { postNewUser } from '../../../globalStore/reducers/UserSlice/NoiseActions';
 /*IMPORT CSS*/
-import { Box, Switch, Button } from '@mui/material';
-import { Container, InputBox, Input } from './styledComponents';
+import { Select, Switch, Button, MenuItem } from '@mui/material';
+import {
+   Container,
+   InputBox,
+   Input,
+   Label,
+   OptionsBox,
+   SwitchBox2,
+   SwitchBox,
+} from './styledComponents';
 /*IMPORT DATA*/
 import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
-import config from './textFieldConfig';
+import { config, validator } from './utilities';
 
 const NewUserForm = () => {
    const [newUserData, setNewUserData] = useState<NewUserData>({
@@ -18,26 +26,49 @@ const NewUserForm = () => {
       country: '',
       city: '',
       address: '',
-      postal_code: 0,
-      phone_number: 0,
+      postal_code: undefined,
+      phone_number: undefined,
       investment: '',
-      contract: '',
+      contract: 6,
       total_investment: '',
       withdrawal_method: '',
       investment_startup: '',
       investment_end: '',
       role: 'user',
+      profit_benefit: undefined,
+      estimated_profit: undefined,
+      deposit_kind: 'crypto',
+      fiat_kind: 'dolar',
    });
-
    const handleInputChange = (
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
    ) => {
-      setNewUserData({
-         ...newUserData,
-         [event.target.name]: event.target.value,
-      });
+      if (
+         event.target.name === 'postal_code' ||
+         event.target.name === 'phone_number' ||
+         event.target.name === 'profit_benefit' ||
+         event.target.name === 'estimated_profit'
+      ) {
+         setNewUserData({
+            ...newUserData,
+            [event.target.name]: Number(event.target.value),
+         });
+      } else {
+         setNewUserData({
+            ...newUserData,
+            [event.target.name]: event.target.value,
+         });
+      }
    };
-
+   const handleDepositKindChange = (
+      event: React.ChangeEvent<HTMLInputElement>
+   ) => {
+      if (newUserData.deposit_kind === 'fiat') {
+         setNewUserData({ ...newUserData, deposit_kind: 'crypto' });
+      } else {
+         setNewUserData({ ...newUserData, deposit_kind: 'fiat' });
+      }
+   };
    const handleAdminPermissionsChange = (
       event: React.ChangeEvent<HTMLInputElement>
    ) => {
@@ -47,15 +78,26 @@ const NewUserForm = () => {
          setNewUserData({ ...newUserData, role: 'user' });
       }
    };
-
+   const handleSelector = (event: any) => {
+      setNewUserData({
+         ...newUserData,
+         [event.target.name]: event.target.value,
+      });
+   };
    const handleSubmmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-      postNewUser(newUserData)
-         .then((ans) => {
-            console.log('SI');
-         })
-         .catch((err) => {
-            console.log(err);
-         });
+      console.log(newUserData);
+      const allow = validator(newUserData);
+      if (!allow.length) {
+         postNewUser(newUserData)
+            .then((ans) => {
+               console.log(ans);
+            })
+            .catch((err) => {
+               console.log(err);
+            });
+      } else {
+         console.log(allow);
+      }
    };
 
    return (
@@ -65,66 +107,73 @@ const NewUserForm = () => {
                InputProps={config}
                name='name'
                variant='standard'
-               value={newUserData.name}
                placeholder='Name'
+               autoComplete='off'
+               value={newUserData.name}
                onChange={handleInputChange}
             />
             <Input
                InputProps={config}
-               variant='standard'
-               value={newUserData.lastname}
                name='lastname'
-               onChange={handleInputChange}
+               variant='standard'
                placeholder='Last Name'
+               autoComplete='off'
+               value={newUserData.lastname}
+               onChange={handleInputChange}
             />
             <Input
                InputProps={config}
                name='email'
-               value={newUserData.email}
                variant='standard'
-               onChange={handleInputChange}
                placeholder='Email'
+               autoComplete='off'
+               value={newUserData.email}
+               onChange={handleInputChange}
             />
             <Input
                InputProps={config}
                name='password'
-               value={newUserData.password}
                variant='standard'
-               onChange={handleInputChange}
                placeholder='Password'
+               value={newUserData.password}
+               onChange={handleInputChange}
             />
          </InputBox>
          <InputBox>
             <Input
+               InputProps={config}
+               name='country'
                variant='standard'
                placeholder='Country'
-               name='country'
+               autoComplete='off'
                value={newUserData.country}
                onChange={handleInputChange}
-               InputProps={config}
             />
             <Input
+               InputProps={config}
+               name='city'
                variant='standard'
                placeholder='City'
-               name='city'
+               autoComplete='off'
                value={newUserData.city}
                onChange={handleInputChange}
-               InputProps={config}
             />
             <Input
+               InputProps={config}
+               name='address'
                variant='standard'
                placeholder='Address'
-               name='address'
+               autoComplete='off'
                value={newUserData.address}
                onChange={handleInputChange}
-               InputProps={config}
             />
             <Input
+               InputProps={config}
+               name='postal_code'
                variant='standard'
                placeholder='Postal Code'
-               name='postal_code'
+               autoComplete='off'
                value={newUserData.postal_code}
-               InputProps={config}
                onChange={handleInputChange}
             />
          </InputBox>
@@ -134,75 +183,122 @@ const NewUserForm = () => {
                variant='standard'
                name='phone_number'
                placeholder='Phone Number'
+               autoComplete='off'
+               value={newUserData.phone_number}
                onChange={handleInputChange}
             />
             <Input
                InputProps={config}
-               variant='standard'
-               onChange={handleInputChange}
                name='investment'
+               variant='standard'
                placeholder='Investment'
+               autoComplete='off'
+               value={newUserData.investment}
+               onChange={handleInputChange}
             />
             <Input
                InputProps={config}
-               onChange={handleInputChange}
                name='total_investment'
                variant='standard'
-               placeholder='Total Inevstment'
-            />
-            <Input
-               InputProps={config}
-               variant='standard'
-               name='withdrawal_method'
+               placeholder='Total Investment'
+               autoComplete='off'
+               value={newUserData.total_investment}
                onChange={handleInputChange}
-               placeholder='Withdrawal Method'
             />
+            <Select
+               name='contract'
+               value={newUserData.contract}
+               onChange={handleSelector}
+               style={{
+                  backgroundColor: 'white',
+                  width: '5vw',
+                  height: '2.5rem',
+               }}
+            >
+               <MenuItem value={6}>6</MenuItem>
+               <MenuItem value={9}>9</MenuItem>
+               <MenuItem value={12}>12</MenuItem>
+               <MenuItem value={15}>15</MenuItem>
+               <MenuItem value={18}>18</MenuItem>
+               <MenuItem value={21}>21</MenuItem>
+               <MenuItem value={24}>24</MenuItem>
+               <MenuItem value={27}>27</MenuItem>
+               <MenuItem value={30}>30</MenuItem>
+            </Select>
+            <Label>Meses</Label>
          </InputBox>
          <InputBox>
             <Input
                InputProps={config}
-               variant='standard'
-               onChange={handleInputChange}
                name='investment_startup'
+               variant='standard'
                placeholder='Investment Startup'
+               autoComplete='off'
+               value={newUserData.investment_startup}
+               onChange={handleInputChange}
             />
             <Input
                InputProps={config}
-               variant='standard'
-               onChange={handleInputChange}
                name='investment_end'
+               variant='standard'
                placeholder='Investment End'
+               autoComplete='off'
+               value={newUserData.investment_end}
+               onChange={handleInputChange}
             />
             <Input
                InputProps={config}
+               name='profit_benefit'
                variant='standard'
+               placeholder='Profit Benefit'
+               autoComplete='off'
+               value={newUserData.profit_benefit}
                onChange={handleInputChange}
-               name='contract'
-               placeholder='Contract'
             />
-            <Box
-               style={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  alignItems: 'center',
-                  backgroundColor: 'white',
-               }}
-            >
-               <label style={{ color: 'black', fontFamily: 'Helvetica' }}>
-                  Administrator permissions
-               </label>
+            <Input
+               InputProps={config}
+               name='estimated_profit'
+               variant='standard'
+               placeholder='Estimated Profit'
+               autoComplete='off'
+               value={newUserData.estimated_profit}
+               onChange={handleInputChange}
+            />
+         </InputBox>
+         <OptionsBox>
+            <SwitchBox2>
+               <Label>CRYPTO</Label>
+               <Switch onChange={handleDepositKindChange} color='warning' />
+               <Label>FIAT</Label>
+               {newUserData.deposit_kind === 'fiat' && (
+                  <Select
+                     name='fiat_kind'
+                     value={newUserData.fiat_kind}
+                     onChange={handleSelector}
+                     style={{
+                        backgroundColor: 'white',
+                        width: '5vw',
+                        height: '2.5rem',
+                     }}
+                  >
+                     <MenuItem value={'dolar'}>Dolar</MenuItem>
+                  </Select>
+               )}
+            </SwitchBox2>
+            <SwitchBox>
+               <Label>Give administrator permissions</Label>
                <Switch
                   onChange={handleAdminPermissionsChange}
                   color='warning'
                />
-            </Box>
+            </SwitchBox>
             <Button
                onClick={handleSubmmit}
                style={{ backgroundColor: 'yellow', width: '5rem' }}
             >
                SAVE
             </Button>
-         </InputBox>
+         </OptionsBox>
       </Container>
    );
 };

@@ -11,8 +11,8 @@ import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
+import FormProfileUser from './components/macro/FormProfileUser/FormProfileUser';
 /*IMPORT CSS*/
-import { NoAuthenticatedView } from './utils/appStyledComponents';
 import { Box } from '@mui/material';
 
 const App = () => {
@@ -40,12 +40,15 @@ const App = () => {
    return (
       <ThemeProvider theme={theme}>
          <Navbar />
-         <Routes>
-            <Route path='/' element={<LandingPage />} />
-            <Route path='/:page' element={<LandingPage />} />
-            <Route path='/user/newuser' element={<NewUserForm />} />
-            <Route path='/user/profile' element={<Profile />} />
-         </Routes>
+         <Box>
+            <Routes>
+               <Route path='/' element={<LandingPage />} />
+               <Route path='/:page' element={<LandingPage />} />
+               <Route path='/user/newuser' element={<NewUserForm />} />
+               <Route path='/user/profile' element={<Profile />} />
+               <Route path='/user/profileedit' element={<FormProfileUser />} />
+            </Routes>
+         </Box>
       </ThemeProvider>
    );
 };

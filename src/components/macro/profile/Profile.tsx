@@ -29,6 +29,22 @@ const Profile = () => {
                <Text>Phone Number: </Text>
                <Text2>{UI.phone_number}</Text2>
             </Box>
+            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
+               <Text>Address:</Text>
+               <Text2> {UI.address}</Text2>
+            </Box>
+            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
+               <Text>Country: </Text>
+               <Text2>{UI.country}</Text2>
+            </Box>
+            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
+               <Text>City: </Text>
+               <Text2>{UI.city}</Text2>
+            </Box>
+            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
+               <Text>Postal Code:</Text>
+               <Text2> {UI.postal_code}</Text2>
+            </Box>
          </Box>
       </Container>
    );
