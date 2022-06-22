@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
-import Particle from '../../../particles/Particle';
+import Particle from '../../../particles/blockchain/Particle';
 import ContactView from '../../micro/landingPage/ContactView/ContactView';
 import Login from '../session/login/Login';
 /*IMPORT CSS*/

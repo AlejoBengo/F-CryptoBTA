@@ -4,7 +4,7 @@ import { loadFull } from 'tsparticles';
 import Tilt from 'react-parallax-tilt';
 /*IMPORT CSS*/
 import { Container, SubContainer } from './styledComponents';
-import BTALogo from '../imagenes/BTALogo.png';
+import BTALogo from '../../imagenes/BTALogo.png';
 import './particles.css';
 
 const Particle = () => {
@@ -41,6 +41,11 @@ const Particle = () => {
                         onHover: {
                            enable: true,
                            mode: ['grab', 'attract', 'connect', 'bubble'],
+                           parallax: {
+                              enable: true,
+                              force: 60,
+                              smooth: 10,
+                           },
                         },
                         resize: false,
                      },

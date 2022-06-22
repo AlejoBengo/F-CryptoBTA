@@ -10,6 +10,7 @@ export const NavContainer = styled(Box)(
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: none;
 `
 );
 
