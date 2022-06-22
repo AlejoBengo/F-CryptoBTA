@@ -1,14 +1,17 @@
 /*IMPORT UTILITIES*/
-import { useState } from 'react';
-import { postNewUser } from '../../../globalStore/reducers/UserSlice/NoiseActions';
+import { useEffect, useState } from 'react';
+import { EditUser } from '../../../globalStore/reducers/UserSlice/NoiseActions';
 /*IMPORT CSS*/
 import { Box, Switch, Button } from '@mui/material';
-import { ContainerEdit, InputBox, Input } from '../newUserForm/styledComponents';
+import { ContainerEdit, InputBox, Input, InputEmail } from '../newUserForm/styledComponents';
 /*IMPORT DATA*/
 import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
 import config from '../newUserForm/textFieldConfig';
+import {useAppSelector} from '../../../globalStore/store/hooks'
+import { setUserData } from '../../../globalStore/reducers/UserSlice/UserSlice';
 
 const FormProfileUser = () => {
+  const ui = useAppSelector((state) => state.UserSlice);
    const [newUserData, setNewUserData] = useState<NewUserData>({
       _id: '',
       name: '',
@@ -18,8 +21,8 @@ const FormProfileUser = () => {
       country: '',
       city: '',
       address: '',
-      postal_code: '',
-      phone_number: '',
+      postal_code: 0,
+      phone_number: 0,
       investment: '',
       contract: '',
       total_investment: '',
@@ -28,10 +31,23 @@ const FormProfileUser = () => {
       investment_end: '',
       role: 'user',
    });
-
+useEffect(()=>{
+   setNewUserData({
+      ...newUserData,      
+      name: ui.name,
+      lastname: ui.lastname,
+      email: ui.email,
+      password: ui.password,
+      country: ui.country,
+      city: ui.city,
+      address: ui.address,
+      postal_code: ui.postal_code,
+      phone_number: ui.phone_number})
+},[ui])
    const handleInputChange = (
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-   ) => {
+      ) => {
+        
       setNewUserData({
          ...newUserData,
          [event.target.name]: event.target.value,
@@ -39,25 +55,30 @@ const FormProfileUser = () => {
    };
 
    const handleSubmmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-      postNewUser(newUserData)
-         .then((ans) => {
+      EditUser(newUserData)
+         .then((newUserData) => {
+            setUserData(newUserData)
+            console.log(newUserData);
             console.log('SI');
          })
          .catch((err) => {
             console.log(err);
          });
+        
    };
 
    return (
 <>
       <ContainerEdit>
-         <Input
+         <InputEmail
                InputProps={config}
                name='email'
                value={newUserData.email}
                variant='standard'
                onChange={handleInputChange}
                placeholder='Email'
+               disabled 
+               style={{backgroundColor:"#fff"}}
             />
             <Input
                InputProps={config}
@@ -114,14 +135,7 @@ const FormProfileUser = () => {
                InputProps={config}
                variant='standard'
                name='phone_number'
-               placeholder='Área Code +1'
-               onChange={handleInputChange}
-               type='number'
-            />
-            <Input
-               InputProps={config}
-               variant='standard'
-               name='phone_number'
+               value={newUserData.phone_number}
                placeholder='Phone Number'
                onChange={handleInputChange}
                type='number'

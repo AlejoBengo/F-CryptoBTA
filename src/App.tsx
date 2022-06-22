@@ -46,7 +46,7 @@ const App = () => {
                <Route path='/:page' element={<LandingPage />} />
                <Route path='/user/newuser' element={<NewUserForm />} />
                <Route path='/user/profile' element={<Profile />} />
-               <Route path='/user/profileedit' element={<FormProfileUser />} />
+               <Route path='/user/profileedit/' element={<FormProfileUser />} />
             </Routes>
          </Box>
       </ThemeProvider>
