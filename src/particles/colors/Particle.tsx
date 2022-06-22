@@ -32,6 +32,11 @@ const ColorParticle = () => {
                      onhover: {
                         enable: true,
                         mode: 'trail',
+                        parallax: {
+                           enable: true,
+                           force: 180,
+                           smooth: 25,
+                        },
                      },
                   },
                   modes: {

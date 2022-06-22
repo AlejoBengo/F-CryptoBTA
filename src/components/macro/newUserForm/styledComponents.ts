@@ -62,3 +62,8 @@ export const SwitchBox2 = styled(Box)`
    over-flow: hidden;
    padding-bottom: 0.4rem;
 `;
+export const InputEmail = styled(TextField)`
+   font-size: 1.5rem;
+   border: 0.1rem solid white;
+   padding-left: 1rem;
+`;

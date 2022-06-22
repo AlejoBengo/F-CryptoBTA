@@ -16,6 +16,21 @@ export const postNewUser = async (data: NewUserData) => {
       return false;
    }
 };
+export const EditUser = async (data: NewUserData) => {
+   try {
+      const processCompleted = (await axios.put('/user/edituser', data)).data
+         .name
+         ? true
+         : false;
+      if (processCompleted) {
+         return true;
+      } else {
+         return false;
+      }
+   } catch (error) {
+      return false;
+   }
+};
 
 export const fetchUserForLogin = async (data: UserDataForLogin) => {
    try {

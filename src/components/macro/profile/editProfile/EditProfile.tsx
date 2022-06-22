@@ -1,14 +1,15 @@
 /*IMPORT UTILITIES*/
-import { useState } from 'react';
-import { postNewUser } from '../../../globalStore/reducers/UserSlice/NoiseActions';
+import { useEffect, useState } from 'react';
+import { useAppSelector } from '../../../../globalStore/store/hooks';
 /*IMPORT CSS*/
 import { Button } from '@mui/material';
-import { ContainerEdit, Input } from './styledComponents';
+import { SubContainer, Input, Title, Form } from './styledComponents';
 /*IMPORT DATA*/
-import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
+import { NewUserData } from '../../../../globalStore/reducers/UserSlice/utilities';
 import { config } from './utilities';
 
-const FormProfileUser = () => {
+const EditProfile = () => {
+   const UI = useAppSelector((state) => state.UserSlice);
    const [newUserData, setNewUserData] = useState<NewUserData>({
       _id: '',
       name: '',
@@ -32,7 +33,20 @@ const FormProfileUser = () => {
       deposit_kind: '',
       fiat_kind: '',
    });
-
+   useEffect(() => {
+      setNewUserData({
+         ...newUserData,
+         name: UI.name,
+         lastname: UI.lastname,
+         email: UI.email,
+         password: UI.password,
+         country: UI.country,
+         city: UI.city,
+         address: UI.address,
+         postal_code: UI.postal_code,
+         phone_number: UI.phone_number,
+      });
+   }, [UI]);
    const handleInputChange = (
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
    ) => {
@@ -43,18 +57,21 @@ const FormProfileUser = () => {
    };
 
    const handleSubmmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-      postNewUser(newUserData)
-         .then((ans) => {
-            console.log('SI');
-         })
-         .catch((err) => {
-            console.log(err);
-         });
+      // EditUser(newUserData)
+      //    .then((newUserData) => {
+      //       setUserData(newUserData)
+      //       console.log(newUserData);
+      //       console.log('SI');
+      //    })
+      //    .catch((err) => {
+      //       console.log(err);
+      //    });
    };
 
    return (
-      <>
-         <ContainerEdit>
+      <SubContainer>
+         <Form>
+            <Title>{UI.email}</Title>
             <Input
                InputProps={config}
                name='email'
@@ -62,6 +79,8 @@ const FormProfileUser = () => {
                variant='standard'
                onChange={handleInputChange}
                placeholder='Email'
+               disabled
+               style={{ backgroundColor: '#fff' }}
             />
             <Input
                InputProps={config}
@@ -117,14 +136,7 @@ const FormProfileUser = () => {
                InputProps={config}
                variant='standard'
                name='phone_number'
-               placeholder='Área Code +1'
-               onChange={handleInputChange}
-               type='number'
-            />
-            <Input
-               InputProps={config}
-               variant='standard'
-               name='phone_number'
+               value={newUserData.phone_number}
                placeholder='Phone Number'
                onChange={handleInputChange}
                type='number'
@@ -145,9 +157,9 @@ const FormProfileUser = () => {
             >
                SAVE
             </Button>
-         </ContainerEdit>
-      </>
+         </Form>
+      </SubContainer>
    );
 };
 
-export default FormProfileUser;
+export default EditProfile;

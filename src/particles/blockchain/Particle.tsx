@@ -43,8 +43,8 @@ const Particle = () => {
                            mode: ['grab', 'attract', 'connect', 'bubble'],
                            parallax: {
                               enable: true,
-                              force: 60,
-                              smooth: 10,
+                              force: 30,
+                              smooth: 5,
                            },
                         },
                         resize: false,

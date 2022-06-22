@@ -1,4 +1,4 @@
-import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
+import { NewUserData } from '../../../../globalStore/reducers/UserSlice/utilities';
 export const config = { inputProps: { style: { color: 'white' } } };
 
 export const validator = (data: NewUserData) => {
