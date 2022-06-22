@@ -10,6 +10,10 @@ display: flex;
 justify-content: flex-end;
 padding-right: 1rem;
 padding-left: 1rem;
+
+@media (max-width: 768px) {
+  padding-right: 0rem;
+}
 `
 );
 
@@ -20,5 +24,11 @@ export const Pic = styled(Avatar)(
   background-color: yellow;
   cursor: pointer;
   color: black;
+  
+  @media (max-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 1rem;
+ }
 `
 );

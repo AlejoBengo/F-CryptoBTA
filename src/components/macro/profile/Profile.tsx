@@ -1,35 +1,22 @@
 /*IMPORT UTILITIES*/
 import { useAppSelector } from '../../../globalStore/store/hooks';
+import { useNavigate, useParams } from 'react-router-dom';
+/*IMPORT COMPONENTS*/
+import ColorParticle from '../../../particles/colors/Particle';
+import ViewProfile from './viewProfile/ViewProfile';
+import EditProfile from './editProfile/EditProfile';
 /*IMPORT CSS*/
-import { Box } from '@mui/material';
-import { Container, Text, Text2 } from './styledComponents';
+import { Container } from './styledComponents';
+
 const Profile = () => {
+   const navigate = useNavigate();
+   const id = useParams();
    const UI = useAppSelector((state) => state.UserSlice);
 
    return (
       <Container>
-         <Box>
-            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
-               <Text>ID: </Text>
-               <Text2>{UI._id.split('').slice(0, 7).join('')}</Text2>
-            </Box>
-            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
-               <Text>Name:</Text>
-               <Text2> {UI.name}</Text2>
-            </Box>
-            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
-               <Text>Last Name: </Text>
-               <Text2>{UI.lastname}</Text2>
-            </Box>
-            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
-               <Text>Email:</Text>
-               <Text2> {UI.email}</Text2>
-            </Box>
-            <Box style={{ display: 'flex', alignItems: 'flex-end' }}>
-               <Text>Phone Number: </Text>
-               <Text2>{UI.phone_number}</Text2>
-            </Box>
-         </Box>
+         <ColorParticle />
+         {!Object.keys(id).length ? <ViewProfile /> : <EditProfile />}
       </Container>
    );
 };

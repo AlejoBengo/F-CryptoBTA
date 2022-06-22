@@ -12,6 +12,7 @@ export const NavigationBar = styled(AppBar)(
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
+   box-shadow: none;
  `
 );
 
@@ -20,10 +21,11 @@ export const NavContainer2 = styled(AppBar)(
   max-height: 11.5vh;
   min-height: 11.5vh;
   position: fixed;
-  background-color: black;
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  box-shadow: none;
 `
 );

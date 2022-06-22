@@ -1,17 +1,15 @@
 /*IMPORT UTILITIES*/
 import { useEffect, useState } from 'react';
-import { EditUser } from '../../../globalStore/reducers/UserSlice/NoiseActions';
+import { useAppSelector } from '../../../../globalStore/store/hooks';
 /*IMPORT CSS*/
-import { Box, Switch, Button } from '@mui/material';
-import { ContainerEdit, InputBox, Input, InputEmail } from '../newUserForm/styledComponents';
+import { Button } from '@mui/material';
+import { SubContainer, Input, Title, Form } from './styledComponents';
 /*IMPORT DATA*/
-import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
-import config from '../newUserForm/textFieldConfig';
-import {useAppSelector} from '../../../globalStore/store/hooks'
-import { setUserData } from '../../../globalStore/reducers/UserSlice/UserSlice';
+import { NewUserData } from '../../../../globalStore/reducers/UserSlice/utilities';
+import { config } from './utilities';
 
-const FormProfileUser = () => {
-  const ui = useAppSelector((state) => state.UserSlice);
+const EditProfile = () => {
+   const UI = useAppSelector((state) => state.UserSlice);
    const [newUserData, setNewUserData] = useState<NewUserData>({
       _id: '',
       name: '',
@@ -24,30 +22,34 @@ const FormProfileUser = () => {
       postal_code: 0,
       phone_number: 0,
       investment: '',
-      contract: '',
+      contract: 6,
       total_investment: '',
       withdrawal_method: '',
       investment_startup: '',
       investment_end: '',
       role: 'user',
+      profit_benefit: 0,
+      estimated_profit: 0,
+      deposit_kind: '',
+      fiat_kind: '',
    });
-useEffect(()=>{
-   setNewUserData({
-      ...newUserData,      
-      name: ui.name,
-      lastname: ui.lastname,
-      email: ui.email,
-      password: ui.password,
-      country: ui.country,
-      city: ui.city,
-      address: ui.address,
-      postal_code: ui.postal_code,
-      phone_number: ui.phone_number})
-},[ui])
+   useEffect(() => {
+      setNewUserData({
+         ...newUserData,
+         name: UI.name,
+         lastname: UI.lastname,
+         email: UI.email,
+         password: UI.password,
+         country: UI.country,
+         city: UI.city,
+         address: UI.address,
+         postal_code: UI.postal_code,
+         phone_number: UI.phone_number,
+      });
+   }, [UI]);
    const handleInputChange = (
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-      ) => {
-        
+   ) => {
       setNewUserData({
          ...newUserData,
          [event.target.name]: event.target.value,
@@ -55,30 +57,30 @@ useEffect(()=>{
    };
 
    const handleSubmmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-      EditUser(newUserData)
-         .then((newUserData) => {
-            setUserData(newUserData)
-            console.log(newUserData);
-            console.log('SI');
-         })
-         .catch((err) => {
-            console.log(err);
-         });
-        
+      // EditUser(newUserData)
+      //    .then((newUserData) => {
+      //       setUserData(newUserData)
+      //       console.log(newUserData);
+      //       console.log('SI');
+      //    })
+      //    .catch((err) => {
+      //       console.log(err);
+      //    });
    };
 
    return (
-<>
-      <ContainerEdit>
-         <InputEmail
+      <SubContainer>
+         <Form>
+            <Title>{UI.email}</Title>
+            <Input
                InputProps={config}
                name='email'
                value={newUserData.email}
                variant='standard'
                onChange={handleInputChange}
                placeholder='Email'
-               disabled 
-               style={{backgroundColor:"#fff"}}
+               disabled
+               style={{ backgroundColor: '#fff' }}
             />
             <Input
                InputProps={config}
@@ -96,7 +98,7 @@ useEffect(()=>{
                onChange={handleInputChange}
                placeholder='Last Name'
             />
-           
+
             <Input
                InputProps={config}
                name='password'
@@ -105,8 +107,7 @@ useEffect(()=>{
                onChange={handleInputChange}
                placeholder='Password'
             />
-         
-      
+
             <Input
                variant='standard'
                placeholder='Country'
@@ -140,8 +141,8 @@ useEffect(()=>{
                onChange={handleInputChange}
                type='number'
             />
- 
-                <Input
+
+            <Input
                variant='standard'
                placeholder='Postal Code'
                name='postal_code'
@@ -149,7 +150,6 @@ useEffect(()=>{
                InputProps={config}
                onChange={handleInputChange}
                type='number'
-
             />
             <Button
                onClick={handleSubmmit}
@@ -157,10 +157,9 @@ useEffect(()=>{
             >
                SAVE
             </Button>
-         
-      </ContainerEdit>
-      </>
+         </Form>
+      </SubContainer>
    );
 };
 
-export default FormProfileUser;
+export default EditProfile;

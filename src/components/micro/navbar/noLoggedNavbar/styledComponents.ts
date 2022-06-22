@@ -1,6 +1,7 @@
 /*IMPORT UTILITIES*/
 import { styled } from '@mui/system';
-import { Box, Tab, Menu } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 
 export const NavContainer = styled(Box)(
    ({ theme }) => `
@@ -9,6 +10,7 @@ export const NavContainer = styled(Box)(
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: none;
 `
 );
 
@@ -74,6 +76,12 @@ export const ButtonsBox = styled(Box)(
  height: 2.5rem;
  display: flex;
  justify-content: space-between;
+ 
+ @media (max-width: 768px) {
+  align-items: center;
+  width: 100vw;
+  padding-left: 1rem;
+}
 `
 );
 
@@ -84,5 +92,52 @@ export const A = styled('a')(
   justify-content: center;
   align-items: center;
   margin-top: 0.5rem;
+`
+);
+
+export const Tablero = styled(Tabs)(
+   ({ theme }) => `
+  
+  @media (max-width: 768px) {
+    display: none;
+ }
+`
+);
+
+export const Dots = styled(DensityMediumIcon)(
+   ({ theme }) => `
+  display: none;
+ 
+ @media (max-width: 768px) {
+  display: block;
+  color: #D8C945;
+  font-size: 2rem;
+}
+`
+);
+
+export const LateralBox = styled(Box)(
+   ({ theme }) => `
+  width: 70vw;
+  height: 100vh;
+  border: none;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+`
+);
+
+export const InsideButton = styled('button')(
+   ({ theme }) => `
+   width: 13rem;
+   height: 3rem;
+  background-color: transparent;
+  color: #D8C945;
+  border: 0.1rem solid #D8C945;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `
 );

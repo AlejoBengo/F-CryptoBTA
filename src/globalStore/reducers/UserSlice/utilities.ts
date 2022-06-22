@@ -12,15 +12,19 @@ export interface NewUserData {
    country: string;
    city: string;
    address: string;
-   postal_code: number|string;
-   phone_number: number|string;
+   postal_code: number | undefined;
+   phone_number: number | undefined;
    investment: string;
    total_investment: string;
    withdrawal_method: string;
-   contract: string;
+   contract: number;
    investment_startup: string;
    investment_end: string;
    role: string;
+   profit_benefit: number | undefined;
+   estimated_profit: number | undefined;
+   deposit_kind: string;
+   fiat_kind: string;
 }
 
 export const initialState: NewUserData = {
@@ -37,8 +41,12 @@ export const initialState: NewUserData = {
    investment: '',
    total_investment: '',
    withdrawal_method: '',
-   contract: '',
+   contract: 6,
    investment_startup: '',
    investment_end: '',
    role: '',
+   profit_benefit: 0,
+   estimated_profit: 0,
+   deposit_kind: '',
+   fiat_kind: '',
 };

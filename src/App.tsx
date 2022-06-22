@@ -11,8 +11,8 @@ import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
-import FormProfileUser from './components/macro/FormProfileUser/FormProfileUser'
 import Graficos from './components/macro/Graficos/Graficos'
+import EditProfile from './components/macro/profile/editProfile/EditProfile';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 
@@ -20,9 +20,9 @@ const App = () => {
    const navigate = useNavigate();
    const dispatch = useAppDispatch();
    const [cookies, setCookie, removeCookie] = useCookies();
-
    const userInformation = useAppSelector((state) => state.UserSlice);
    const muiTheme = useAppSelector((state) => state.MuiModeSlice.muiTheme);
+
    const [theme, setTheme] = useState(createTheme(createOptions(muiTheme)));
 
    useEffect(() => {
@@ -47,8 +47,8 @@ const App = () => {
                <Route path='/:page' element={<LandingPage />} />
                <Route path='/user/newuser' element={<NewUserForm />} />
                <Route path='/user/profile' element={<Profile />} />
-               <Route path='/user/profileedit/' element={<FormProfileUser />} />
                <Route path='/graficos' element={<Graficos />} />
+               <Route path='/user/profile/:id' element={<Profile />} />
             </Routes>
          </Box>
       </ThemeProvider>
