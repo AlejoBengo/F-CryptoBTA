@@ -35,3 +35,8 @@ export const Input = styled(TextField)`
    border: 0.1rem solid white;
    padding-left: 1rem;
 `;
+export const InputEmail = styled(TextField)`
+   font-size: 1.5rem;
+   border: 0.1rem solid white;
+   padding-left: 1rem;
+`;
