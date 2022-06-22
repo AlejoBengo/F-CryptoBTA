@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import { ContainerEdit, Input } from './styledComponents';
 /*IMPORT DATA*/
 import { NewUserData } from '../../../globalStore/reducers/UserSlice/utilities';
-import { config } from '../newUserForm/utilities';
+import { config } from './utilities';
 
 const FormProfileUser = () => {
    const [newUserData, setNewUserData] = useState<NewUserData>({
