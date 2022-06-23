@@ -1,15 +1,43 @@
 /*IMPORT UTILITIES*/
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../../globalStore/store/hooks';
+import React, { useEffect, useState } from 'react';
+import {
+   useAppSelector,
+   useAppDispatch,
+} from '../../../../globalStore/store/hooks';
+import { useNavigate } from 'react-router-dom';
+import { editUser } from '../../../../globalStore/reducers/UserSlice/NoiseActions';
+import { setUserData } from '../../../../globalStore/reducers/UserSlice/UserSlice';
+import { useCookies } from 'react-cookie';
 /*IMPORT CSS*/
-import { Button } from '@mui/material';
-import { SubContainer, Input, Title, Form } from './styledComponents';
+import { Backdrop, CircularProgress, Snackbar } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import {
+   SubContainer,
+   Input,
+   Title,
+   Form,
+   SaveButton,
+   ButtonsBox,
+   Label,
+   InputBox,
+} from './styledComponents';
 /*IMPORT DATA*/
 import { NewUserData } from '../../../../globalStore/reducers/UserSlice/utilities';
 import { config } from './utilities';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+   props,
+   ref
+) {
+   return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
+});
+
 const EditProfile = () => {
+   const dispatch = useAppDispatch();
+   const navigate = useNavigate();
+   const [cookies, setCookie, removeCookie] = useCookies();
    const UI = useAppSelector((state) => state.UserSlice);
+
    const [newUserData, setNewUserData] = useState<NewUserData>({
       _id: '',
       name: '',
@@ -33,13 +61,16 @@ const EditProfile = () => {
       deposit_kind: '',
       fiat_kind: '',
    });
+   const [charge, setCharge] = useState<boolean>(false);
+   const [successAlert, setSuccessAlert] = useState<boolean>(false);
+   const [errorAlert, setErrorAlert] = useState<boolean>(false);
+
    useEffect(() => {
       setNewUserData({
          ...newUserData,
          name: UI.name,
          lastname: UI.lastname,
          email: UI.email,
-         password: UI.password,
          country: UI.country,
          city: UI.city,
          address: UI.address,
@@ -47,6 +78,7 @@ const EditProfile = () => {
          phone_number: UI.phone_number,
       });
    }, [UI]);
+
    const handleInputChange = (
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
    ) => {
@@ -55,108 +87,143 @@ const EditProfile = () => {
          [event.target.name]: event.target.value,
       });
    };
-
    const handleSubmmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-      // EditUser(newUserData)
-      //    .then((newUserData) => {
-      //       setUserData(newUserData)
-      //       console.log(newUserData);
-      //       console.log('SI');
-      //    })
-      //    .catch((err) => {
-      //       console.log(err);
-      //    });
+      setCharge(true);
+      editUser(newUserData)
+         .then((editedData) => {
+            if (editedData) {
+               setSuccessAlert(true);
+               setTimeout(() => {
+                  removeCookie('userInformation', { path: '/' });
+                  setCookie('userInformation', editedData, {
+                     path: '/',
+                     expires: new Date('December 31, 2022'),
+                  });
+                  dispatch(setUserData(editedData));
+                  setCharge(false);
+                  setSuccessAlert(false);
+                  navigate('/user/profile');
+               }, 2000);
+            } else {
+               setErrorAlert(true);
+               setTimeout(() => {
+                  setErrorAlert(false);
+                  setCharge(false);
+               }, 3000);
+            }
+         })
+         .catch(() => {
+            setErrorAlert(true);
+            setTimeout(() => {
+               setErrorAlert(false);
+               setCharge(false);
+            }, 3000);
+         });
    };
 
    return (
       <SubContainer>
+         <Snackbar open={errorAlert} autoHideDuration={6000}>
+            <Alert severity='error' sx={{ width: '100%' }}>
+               Something went wrong. Please try again later.
+            </Alert>
+         </Snackbar>
+         <Snackbar open={successAlert} autoHideDuration={6000}>
+            <Alert severity='success' sx={{ width: '100%' }}>
+               Profile edited succsessfully.
+            </Alert>
+         </Snackbar>
+         <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={charge}
+         >
+            <CircularProgress color='warning' size={100} />
+         </Backdrop>
          <Form>
             <Title>{UI.email}</Title>
-            <Input
-               InputProps={config}
-               name='email'
-               value={newUserData.email}
-               variant='standard'
-               onChange={handleInputChange}
-               placeholder='Email'
-               disabled
-               style={{ backgroundColor: '#fff' }}
-            />
-            <Input
-               InputProps={config}
-               name='name'
-               variant='standard'
-               value={newUserData.name}
-               placeholder='Name'
-               onChange={handleInputChange}
-            />
-            <Input
-               InputProps={config}
-               variant='standard'
-               value={newUserData.lastname}
-               name='lastname'
-               onChange={handleInputChange}
-               placeholder='Last Name'
-            />
-
-            <Input
-               InputProps={config}
-               name='password'
-               value={newUserData.password}
-               variant='standard'
-               onChange={handleInputChange}
-               placeholder='Password'
-            />
-
-            <Input
-               variant='standard'
-               placeholder='Country'
-               name='country'
-               value={newUserData.country}
-               onChange={handleInputChange}
-               InputProps={config}
-            />
-            <Input
-               variant='standard'
-               placeholder='City'
-               name='city'
-               value={newUserData.city}
-               onChange={handleInputChange}
-               InputProps={config}
-            />
-            <Input
-               variant='standard'
-               placeholder='Address'
-               name='address'
-               value={newUserData.address}
-               onChange={handleInputChange}
-               InputProps={config}
-            />
-            <Input
-               InputProps={config}
-               variant='standard'
-               name='phone_number'
-               value={newUserData.phone_number}
-               placeholder='Phone Number'
-               onChange={handleInputChange}
-               type='number'
-            />
-
-            <Input
-               variant='standard'
-               placeholder='Postal Code'
-               name='postal_code'
-               value={newUserData.postal_code}
-               InputProps={config}
-               onChange={handleInputChange}
-               type='number'
-            />
-            <Button
-               onClick={handleSubmmit}
-               style={{ backgroundColor: 'yellow', width: '5rem' }}
-            >
-               SAVE
-            </Button>
+            <InputBox>
+               <Label>Name</Label>
+               <Input
+                  InputProps={config}
+                  name='name'
+                  variant='standard'
+                  value={newUserData.name}
+                  placeholder='Name'
+                  onChange={handleInputChange}
+               />
+            </InputBox>
+            <InputBox>
+               <Label>Last name</Label>
+               <Input
+                  InputProps={config}
+                  variant='standard'
+                  value={newUserData.lastname}
+                  name='lastname'
+                  onChange={handleInputChange}
+                  placeholder='Last Name'
+               />
+            </InputBox>
+            <InputBox>
+               <Label>Phone Number</Label>
+               <Input
+                  InputProps={config}
+                  variant='standard'
+                  name='phone_number'
+                  value={newUserData.phone_number}
+                  placeholder='Phone Number'
+                  onChange={handleInputChange}
+                  type='number'
+               />
+            </InputBox>
+            <InputBox>
+               <Label>Address</Label>
+               <Input
+                  variant='standard'
+                  placeholder='Address'
+                  name='address'
+                  value={newUserData.address}
+                  onChange={handleInputChange}
+                  InputProps={config}
+               />
+            </InputBox>
+            <InputBox>
+               <Label>Country</Label>
+               <Input
+                  variant='standard'
+                  placeholder='Country'
+                  name='country'
+                  value={newUserData.country}
+                  onChange={handleInputChange}
+                  InputProps={config}
+               />
+            </InputBox>
+            <InputBox>
+               <Label>City</Label>
+               <Input
+                  variant='standard'
+                  placeholder='City'
+                  name='city'
+                  value={newUserData.city}
+                  onChange={handleInputChange}
+                  InputProps={config}
+               />
+            </InputBox>
+            <InputBox>
+               <Label>Postal Code</Label>
+               <Input
+                  variant='standard'
+                  placeholder='Postal Code'
+                  name='postal_code'
+                  style={{ appearance: 'none' }}
+                  value={newUserData.postal_code}
+                  InputProps={config}
+                  onChange={handleInputChange}
+                  type='number'
+               />
+            </InputBox>
+            <ButtonsBox>
+               <SaveButton onClick={handleSubmmit}>SAVE</SaveButton>
+            </ButtonsBox>
          </Form>
       </SubContainer>
    );

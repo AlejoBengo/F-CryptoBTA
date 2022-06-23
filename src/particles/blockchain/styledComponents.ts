@@ -19,4 +19,10 @@ export const SubContainer = styled(Box)`
    align-items: center;
    background-color: black;
    opacity: 0.8;
+
+   &:parallax {
+      enable: true;
+      force: 30;
+      smooth: 5;
+   },
 `;

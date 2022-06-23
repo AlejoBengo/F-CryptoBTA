@@ -50,3 +50,10 @@ export const initialState: NewUserData = {
    deposit_kind: '',
    fiat_kind: '',
 };
+
+export interface ChangePasswordData {
+   email: string;
+   current_password: string;
+   new_password: string;
+   confirm_password: string;
+}
