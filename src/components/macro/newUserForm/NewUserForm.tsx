@@ -99,7 +99,7 @@ const NewUserForm = () => {
          console.log(allow);
       }
    };
-
+console.log(newUserData)
    return (
       <Container>
          <InputBox>
@@ -171,6 +171,7 @@ const NewUserForm = () => {
                InputProps={config}
                name='postal_code'
                variant='standard'
+               type='number'
                placeholder='Postal Code'
                autoComplete='off'
                value={newUserData.postal_code}
@@ -182,6 +183,7 @@ const NewUserForm = () => {
                InputProps={config}
                variant='standard'
                name='phone_number'
+               type='number'
                placeholder='Phone Number'
                autoComplete='off'
                value={newUserData.phone_number}
@@ -249,6 +251,7 @@ const NewUserForm = () => {
             <Input
                InputProps={config}
                name='profit_benefit'
+               type='number'
                variant='standard'
                placeholder='Profit Benefit'
                autoComplete='off'
@@ -258,6 +261,7 @@ const NewUserForm = () => {
             <Input
                InputProps={config}
                name='estimated_profit'
+               type='number'
                variant='standard'
                placeholder='Estimated Profit'
                autoComplete='off'
