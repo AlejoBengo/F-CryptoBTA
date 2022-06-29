@@ -77,7 +77,7 @@ const Password = () => {
                      removeCookie('userInformation', { path: '/' });
                      setCookie('userInformation', ans, {
                         path: '/',
-                        expires: new Date('December 31, 2022'),
+                        maxAge: 3600,
                      });
                      setSuccessAlert(false);
                      setCharge(false);

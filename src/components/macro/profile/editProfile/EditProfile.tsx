@@ -97,7 +97,7 @@ const EditProfile = () => {
                   removeCookie('userInformation', { path: '/' });
                   setCookie('userInformation', editedData, {
                      path: '/',
-                     expires: new Date('December 31, 2022'),
+                     maxAge: 3600,
                   });
                   dispatch(setUserData(editedData));
                   setCharge(false);

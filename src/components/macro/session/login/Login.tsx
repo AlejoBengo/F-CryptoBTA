@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../../../globalStore/store/hooks';
 import { setUserData } from '../../../../globalStore/reducers/UserSlice/UserSlice';
 import { useCookies } from 'react-cookie';
 import { fetchUserForLogin } from '../../../../globalStore/reducers/UserSlice/NoiseActions';
+/*IMPORT COMPONENTS*/
+import Particle from '../../../../particles/blockchain/Particle';
 /*IMPORT CSS*/
 import {
    Box,
@@ -83,7 +85,7 @@ const Login = () => {
                   dispatch(setUserData(ans));
                   setCookie('userInformation', ans, {
                      path: '/',
-                     expires: new Date('December 31, 2022'),
+                     maxAge: 3600,
                   });
                   setTimeout(() => {
                      setCharge(false);
@@ -142,10 +144,10 @@ const Login = () => {
          >
             <CircularProgress color='warning' size={100} />
          </Backdrop>
-         <Video muted autoPlay loop>
+         {/* <Video muted autoPlay loop>
             <source src={VID} type='video/mp4' />
          </Video>
-         <Filter></Filter>
+         <Filter></Filter> */}
          <RealContainer>
             <Form>
                <Title>LOGIN TO BTA PROTOCOL</Title>
