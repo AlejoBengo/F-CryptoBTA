@@ -13,6 +13,7 @@ import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
 import Graficos from './components/macro/Graficos/Graficos'
 import EditProfile from './components/macro/profile/editProfile/EditProfile';
+import Academy from './components/macro/Academy/Academy';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 
@@ -43,6 +44,7 @@ const App = () => {
          <Navbar />
          <Box>
             <Routes>
+               <Route path= '/academy' element={<Academy />} />
                <Route path='/' element={<LandingPage />} />
                <Route path='/:page' element={<LandingPage />} />
                <Route path='/user/newuser' element={<NewUserForm />} />

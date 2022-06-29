@@ -114,3 +114,100 @@ const Particle = () => {
 };
 
 export default Particle;
+export const Particless = () => {
+   const particlesInits = async (main: any) => {
+      await loadFull(main);
+   };
+
+   return (
+      <Container>
+         <SubContainer>
+            <Particles
+               id='tsparticless'
+               init={particlesInits}
+               options={{
+                  fullScreen: {
+                     zIndex: -1,
+                  },
+                  background: {
+                     color: {
+                        value: '#000',
+                     },
+                  },
+                  fpsLimit: 60,
+                  interactivity: {
+                     events: {
+                        onHover: {
+                           enable: true,
+                           mode: ['grab', 'attract', 'connect', 'bubble'],
+                           parallax: {
+                              enable: true,
+                              force: 30,
+                              smooth: 5,
+                           },
+                        },
+                        resize: false,
+                     },
+                     modes: {
+                        bubble: {
+                           distance: 800,
+                           duration: 10,
+                           opacity: 0.4,
+                           size: 2,
+                        },
+                        push: {
+                           quantity: 8,
+                        },
+                        repulse: {
+                           distance: 180,
+                           duration: 80,
+                        },
+                     },
+                  },
+                  particles: {
+                     color: {
+                        value: '#ffffff',
+                     },
+                     links: {
+                        color: '#f0e68c',
+                        distance: 150,
+                        enable: true,
+                        opacity: 0.4,
+                        width: 1,
+                     },
+                     collisions: {
+                        enable: true,
+                     },
+                     move: {
+                        direction: 'none',
+                        enable: true,
+                        outMode: 'bounce',
+                        random: true,
+                        speed: 1.5,
+                        straight: false,
+                     },
+                     number: {
+                        density: {
+                           enable: true,
+                           area: 650,
+                        },
+                        value: 80,
+                     },
+                     opacity: {
+                        value: 0.3,
+                     },
+                     shape: {
+                        type: 'circle',
+                     },
+                     size: {
+                        random: true,
+                        value: 3,
+                     },
+                  },
+                  detectRetina: true,
+               }}
+            />
+         </SubContainer>
+      </Container>
+   );
+};

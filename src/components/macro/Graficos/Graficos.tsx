@@ -31,12 +31,12 @@ ChartJS.register(
 
 const inv = 9500
 const time = 12
-const scores = [ null, 10000, 10500, 11000, 11566, 11678, 11790, 11902, 11982, 12062, 12142 ];
+const scores = [ 95, 100 ];
 const scores2 = [ 9500, 9975, 10450, 10925, 11400, 11875, 12350, 12825, 13300, 13775, 14250, 14725, 15200 ];
-const labels = [0,1, 2, 3, 4, 5, 6, 7,8,9,10,11,12];
+const labels = [0,1,2,3,4,5,6,7,8,9,10,11,12];
 
 const options = {
-  fill: true,
+  fill: false,
   responsive: true,
   scales: {
     y: {
@@ -64,14 +64,14 @@ const Graficos  = () => {
           pointBackgroundColor: "rgb(75, 192, 192)",
           backgroundColor: "rgb(75, 192, 192,0.5)",
         },
-          {
-            label: "Inversion inicial",
-            tension: 0.03,
-            data: scores2,
-            borderColor: "green",
-            backgroundColor: "rgba(0, 255, 0, 0.3)",
-            pointRadius: 5,
-          },
+          // {
+          //   label: "Inversion inicial",
+          //   tension: 0.03,
+          //   data: scores2,
+          //   borderColor: "green",
+          //   backgroundColor: "rgba(0, 255, 0, 0.3)",
+          //   pointRadius: 5,
+          // },
 
       ],
       labels,
@@ -82,12 +82,14 @@ const Graficos  = () => {
     datasets: [
       {
         label: '# of Votes',
-        data: [20,10,50,10],
+        data: [20,15,50,15],
         backgroundColor: [
-          '#0255CA',
-          '#F8ED15',
-          '#FF5714',
-          '#6BDC41',
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
 
         ],
         borderColor: [

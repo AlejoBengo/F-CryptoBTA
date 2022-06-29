@@ -12,7 +12,9 @@ const Navbar = () => {
    const navigate = useNavigate();
    const location = useLocation().pathname;
 
-   if (
+    if(location === "/academy"){
+      return null
+    }else if (
       location === '/' ||
       location === '/dashboard' ||
       location === '/session' ||
