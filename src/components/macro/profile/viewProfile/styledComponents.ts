@@ -86,7 +86,5 @@ export const EditButton = styled('button')`
 
    &:hover {
       width: 12rem;
-      border-radius: 1rem;
-      background-color: #d8c945;
    }
 `;

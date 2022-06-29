@@ -15,8 +15,8 @@ import {
    Snackbar,
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import {
    Container,
    Video,
@@ -48,10 +48,10 @@ const Login = () => {
    const [cookie, setCookie] = useCookies();
 
    const [charge, setCharge] = useState<boolean>(false);
+   const [successAlert, setSuccessAlert] = useState<boolean>(false);
    const [errorAlert, setErrorAlert] = useState<boolean>(false);
    const [errorAlert2, setErrorAlert2] = useState<boolean>(false);
    const [errorAlert3, setErrorAlert3] = useState<boolean>(false);
-   const [successAlert, setSuccessAlert] = useState<boolean>(false);
    const [showPassword, setShowPassword] = useState<string>('password');
    const [userDataForLogin, setUserDatatForLogin] = useState<UserDataForLogin>({
       email: '',

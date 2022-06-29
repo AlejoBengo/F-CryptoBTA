@@ -12,8 +12,8 @@ import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
 import Graficos from './components/macro/Graficos/Graficos'
-import EditProfile from './components/macro/profile/editProfile/EditProfile';
 import Academy from './components/macro/Academy/Academy';
+import Password from './components/macro/password/Password';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 
@@ -51,6 +51,7 @@ const App = () => {
                <Route path='/user/profile' element={<Profile />} />
                <Route path='/graficos' element={<Graficos />} />
                <Route path='/user/profile/:id' element={<Profile />} />
+               <Route path='/user/password' element={<Password />} />
             </Routes>
          </Box>
       </ThemeProvider>
