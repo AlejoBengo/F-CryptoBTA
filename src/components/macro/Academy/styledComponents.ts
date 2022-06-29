@@ -29,7 +29,7 @@ padding-top: 11.5vh;
    background-image: URL(${bkg});
    background-repeat: no-repeat;
    background-position: center;
-   background-size: cover;
+   background-size: contain;
    display: flex;
     align-content: flex-end;
     flex-direction: row;
