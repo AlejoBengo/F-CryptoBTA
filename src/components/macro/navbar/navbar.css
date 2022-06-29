@@ -7,6 +7,6 @@
 
 @media (max-width: 768px) {
    .img {
-      display: none;
+      position: absolute;
    }
 }
