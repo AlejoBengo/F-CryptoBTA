@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import bkg from './bkg.png';
 import cursoGratis from './cursoGratis.png';
 import uno from "./1.png";
-import dos from "./2 .png";
+import dos from "./BTARecurso 1.png";
 /*----------------------------------------------------------------------------*/
 
 export const Container = styled(Box)`
