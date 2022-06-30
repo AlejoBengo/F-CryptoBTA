@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import Particle from '../../../particles/blockchain/Particle';
 import ContactView from '../../micro/landingPage/ContactView/ContactView';
 import Login from '../session/login/Login';
+import Academy from '../Academy/Academy';
 /*IMPORT CSS*/
 import { Container, SubContainer } from './styledComponents';
 
@@ -17,8 +18,10 @@ const LandingPage = () => {
          <SubContainer>
             {page === 'contact' ? (
                <ContactView />
+            ) : page === 'session' ? (
+               <Login />
             ) : (
-               page === 'session' && <Login />
+               page === 'academy' && <Academy />
             )}
          </SubContainer>
       </Container>
