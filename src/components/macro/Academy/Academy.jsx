@@ -4,19 +4,19 @@ import { useParams } from "react-router-dom";
 /*IMPORT COMPONENTS*/
 import { Particless } from "../../../particles/blockchain/Particle";
 import uno from "./1.png";
-import dos from "./2 .png";
+import dos from "./BTARecurso 1.png";
 import tres from "./3.png";
 /*IMPORT CSS*/
 import {
 	Container,
-    ImgContainer,
+	ImgContainer,
 	SubContainer,
 	Input,
 	Buttom,
 	TextWhite,
 	TextBlue,
 	Paraph,
-    TextBlueBtn,
+	TextBlueBtn,
 } from "./styledComponents";
 
 const Academy = () => {
@@ -36,10 +36,10 @@ const Academy = () => {
 		<Container>
 			{/* <Particless /> */}
 			<SubContainer>
-            <ImgContainer>
-            <img src={dos} style={{ width:"100%"}} alt="dos"/>
-            
-{/* 
+				<ImgContainer>
+					<img src={dos} style={{ width: "98%" }} alt="dos" />
+
+					{/* 
 				<Paraph>
 					<TextBlue>13:00</TextBlue>
 					<TextWhite>Hora Madrid Lunes</TextWhite>
@@ -72,26 +72,26 @@ const Academy = () => {
 				<Paraph>
 					<TextWhite style={{ fontWeight: 100}} >SUBSCRIBETE A LA MASTER CLASS</TextWhite>
 				</Paraph> */}
-				<Input
-					name="nombre"
-					variant="standard"
-					placeholder="Nombre"
-					autoComplete="on"
-					value={user.nombre}
-					onChange={handleInputChange}
-				></Input>
-				<Input
-					name="email"
-					variant="standard"
-					placeholder="Email"
-					autoComplete="on"
-					value={user.email}
-					onChange={handleInputChange}
-				/>
-				<TextBlueBtn onClick={handleSubmmit} style={{ width: "100%" }}>
-                <img src={tres} style={{ width:"100%"}} alt="tres"/>
-				</TextBlueBtn>
-            </ImgContainer>
+					<Input
+						name="nombre"
+						variant="standard"
+						placeholder="Nombre"
+						autoComplete="on"
+						value={user.nombre}
+						onChange={handleInputChange}
+					></Input>
+					<Input
+						name="email"
+						variant="standard"
+						placeholder="Email"
+						autoComplete="on"
+						value={user.email}
+						onChange={handleInputChange}
+					/>
+					<TextBlueBtn onClick={handleSubmmit} style={{ width: "98%" }}>
+						<img src={tres} style={{ width: "98%" }} alt="tres" />
+					</TextBlueBtn>
+				</ImgContainer>
 			</SubContainer>
 		</Container>
 	);
