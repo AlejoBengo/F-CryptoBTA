@@ -13,6 +13,9 @@ export const Container = styled(Box)`
 export const ImgPerfil = styled('img')`
    position: absolute;
    width: 30rem;
+   // background-color: red;
+   bottom: -10rem;
+   // margin-top: 0rem;
 
    @media (max-width: 768px) {
       top: 0;
