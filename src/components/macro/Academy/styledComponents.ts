@@ -1,18 +1,27 @@
 import { Box,Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import bkg from './bkg.png';
+import cursoGratis from './cursoGratis.png';
+import uno from "./1.png";
+import dos from "./2 .png";
 /*----------------------------------------------------------------------------*/
 
 export const Container = styled(Box)`
-   width: 95%;
-   min-height: 100%;
+width: 100%;
+height: 100%;
+min-height: 100%;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    align-content: flex-end;
    justify-content: center;
    align-items: baseline;
-`;
+   background-image: URL(${uno});
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   boder:5px solid #000;
+   `;
 export const Paraph = styled(Box)`
 display: flex;
 width:auto;
@@ -23,10 +32,9 @@ width:auto;
 `;
 
 export const ImgContainer = styled(Box)`
-padding-top: 11.5vh;
    height: 100vh;
    width:100%;
-   background-image: URL(${bkg});
+   background-image: URL(${dos});
    background-repeat: no-repeat;
    background-position: center;
    background-size: contain;
@@ -36,22 +44,25 @@ padding-top: 11.5vh;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-`;
-export const SubContainer = styled(Box)`
-   height: auto;
-   width:90%;
-   display: flex;
+    `;
+
+    export const SubContainer = styled(Box)`
+    height: auto;
+    width:90%;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: flex-start;
     align-items: center;
+    background-color: #00000000;
    
 `;
 
 export const Input = styled('input')`
-   margin:10px 0px;
+   margin:5px 0px;
    width: 100%;
+   height: 50px;
    padding-text-left: 1rem;
    border: 0.1rem solid white;
    border-radius: 7% 7% 7% 7% / 50% 50% 50% 50%;
@@ -68,6 +79,7 @@ export const Input = styled('input')`
    }
 `;
 export const TextWhite = styled(Typography)`
+
    font-weight: 900;
    color: #fff;
    display:inline;
@@ -81,7 +93,19 @@ export const TextBlue = styled(Typography)`
    font-size: large;
    color: #00c1cb;
    display:inline;
-   margin: 0px 0.4rem;
+   margin: 0px ;
+   
+`;
+export const TextBlueBtn = styled(Typography)`
+   width: 100%;
+   height: auto;
+   border: 0.1rem solid white;
+   background-color: #00000000;
+   align-self: center;
+   align-content: center;
+   color: #00c1cb;
+   display:inline;
+   margin: 0px 0px 0px 0px;
    
 `;
 export const Buttom = styled(Box)`
