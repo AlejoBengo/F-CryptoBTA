@@ -54,7 +54,7 @@ const Academy = () => {
          .then((ans) => {
             if (ans) {
                setSubscriptor({ name: '', email: '' });
-               window.location.replace('https://t.me/Community_Bta');
+               // window.location.replace('https://t.me/Community_Bta');
             } else {
                setErrorAlert(true);
                setSubscriptor({ name: '', email: '' });
