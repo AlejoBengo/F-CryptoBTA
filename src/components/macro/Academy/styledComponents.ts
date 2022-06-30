@@ -1,105 +1,147 @@
-import { Box,Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import bkg from './bkg.png';
+// import bkg from './bkg.png';
 /*----------------------------------------------------------------------------*/
 
 export const Container = styled(Box)`
-   width: 95%;
-   min-height: 100%;
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   align-content: flex-end;
-   justify-content: center;
-   align-items: baseline;
+   height: 100vh;
+   position: relative;
+   overflow: hidden;
+   margin-top: -11.5vh;
 `;
-export const Paraph = styled(Box)`
-display: flex;
-width:auto;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
+
+export const ImgPerfil = styled('img')`
+   position: absolute;
+   width: 30rem;
+
+   @media (max-width: 768px) {
+      top: 0;
+      width: 25rem;
+      margin-left: -1rem;
+   }
+`;
+
+export const FreeText = styled(Typography)`
+   position: absolute;
+   right: 3rem;
+   top: 3rem;
+   font-size: 6rem;
+   color: #00c2cb;
+   -webkit-text-stroke: 0.1rem #03989e;
+   font-weight: bold;
+   letter-spacing: 0.1rem;
+   text-shadow: 0 0 0.25rem #00c2cb, 0 0 0.5rem #00c2cb, 0 0 0.75rem #00c2cb,
+      0 0 1rem #00c2cb, 0 0 1.25rem #00c2cb;
+   transform: rotate(25deg);
+
+   @media (max-width: 768px) {
+      font-size: 3rem;
+   }
+`;
+
+export const SubContainer = styled(Box)`
+   width: 35vw;
+   height: 70vh;
+   margin-left: 40vw;
+   margin-top: 20vh;
+   display: flex;
+   flex-direction: column;
    align-items: center;
+   background-color: rgba(0, 193, 203, 0.08);
+   padding: 0.5rem;
+   border-radius: 0.5rem;
+
+   @media (max-width: 768px) {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      margin-left: 0vw;
+      justify-content: space-around;
+      margin-top: 0vh;
+      padding-top: 15vh;
+      background-color: rgba(0, 0, 0, 0);
+   }
 `;
 
 export const ImgContainer = styled(Box)`
-padding-top: 11.5vh;
-   height: 100vh;
-   width:100%;
-   background-image: URL(${bkg});
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: contain;
+   width: 100%;
    display: flex;
-    align-content: flex-end;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+   align-items: center;
+   justify-content: space-around;
+
+   @media (max-width: 768px) {
+      width: 100vw;
+   }
 `;
-export const SubContainer = styled(Box)`
-   height: auto;
-   width:90%;
+
+export const Paragraph = styled(Box)`
    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-    justify-content: flex-start;
-    align-items: center;
-   
+`;
+
+export const WhiteText = styled(Typography)`
+   font-size: 1.2vw;
+   font-weight: bold;
+   color: #fff;
+   margin-right: 0.4rem;
+
+   @media (max-width: 768px) {
+      font-size: 1.3rem;
+   }
+`;
+
+export const BlueText = styled(Typography)`
+   font-size: 1.2vw;
+   font-weight: bold;
+   color: #00c1cb;
+   margin-right: 0.4rem;
+
+   @media (max-width: 768px) {
+      font-size: 1.3rem;
+   }
+`;
+
+export const ListBox = styled(Box)`
+   width: 100%;
+`;
+
+export const LiBox = styled(Box)`
+   display: flex;
+`;
+
+export const Li = styled('li')`
+   color: white;
+   font-size: 1.2rem;
+   margin-bottom: 0.2rem;
+`;
+
+export const FormBox = styled(Box)`
+   width: 100%;
+   height: 23vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
 `;
 
 export const Input = styled('input')`
-   margin:10px 0px;
-   width: 100%;
-   padding-text-left: 1rem;
-   border: 0.1rem solid white;
-   border-radius: 7% 7% 7% 7% / 50% 50% 50% 50%;
+   width: 85%;
+   height: 2rem;
+   border-radius: 0.5rem;
+   border: none;
+   outline: none;
    padding-left: 0.5rem;
-   align-self: center;
-   align-content: center;
-   font-weight: 900;
-   font-size: large;
-   background-color: #d9d9d9;
-   color: #00c1cb;
+   color: #000;
+   font-size: 1rem;
+   background-color: #cecece;
    ::placeholder {
-      color: #00c1cb;
-      font-size: 1em;
+      color: #000;
    }
 `;
-export const TextWhite = styled(Typography)`
-   font-weight: 900;
-   color: #fff;
-   display:inline;
-   margin: 0px 0.4rem;
-  
+
+export const ImgButton = styled('img')`
+   width: 20vw;
+
+   @media (max-width: 768px) {
+      width: 68vw;
+   }
 `;
-export const TextBlue = styled(Typography)`
-   align-self: center;
-   align-content: center;
-   font-weight: 900;
-   font-size: large;
-   color: #00c1cb;
-   display:inline;
-   margin: 0px 0.4rem;
-   
-`;
-export const Buttom = styled(Box)`
-cursor:pointer;
-margin:10px 0px;
-width: 100%;
-   align-self: center;
-   align-content: center;
-   margin-left: 0rem;
-   background-color: #00000000;
-   boder: 0px solid transparent;
-`;
-export const A = styled('a')(
-   ({ theme }) => `
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.5rem;
-`
-);

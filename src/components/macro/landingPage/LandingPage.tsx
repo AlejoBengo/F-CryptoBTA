@@ -1,6 +1,5 @@
 /*IMPORT UTILITIES*/
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
 import Particle from '../../../particles/blockchain/Particle';
 import ContactView from '../../micro/landingPage/ContactView/ContactView';

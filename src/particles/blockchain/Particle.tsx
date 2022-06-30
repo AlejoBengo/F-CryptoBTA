@@ -1,5 +1,7 @@
 /*IMPORT UTILITIES*/
+import { useState, useEffect } from 'react';
 import Particles from 'react-tsparticles';
+import { useLocation } from 'react-router-dom';
 import { loadFull } from 'tsparticles';
 import Tilt from 'react-parallax-tilt';
 /*IMPORT CSS*/
@@ -8,6 +10,16 @@ import BTALogo from '../../imagenes/BTALogo.png';
 import './particles.css';
 
 const Particle = () => {
+   const location = useLocation().pathname;
+
+   const [blockchainColor, setBlockchainColor] = useState<string>('#f0e68c');
+
+   useEffect(() => {
+      if (location === '/academy') {
+         setBlockchainColor('#2eb2b8');
+      }
+   }, [location]);
+
    const particlesInit = async (main: any) => {
       await loadFull(main);
    };
@@ -15,14 +27,16 @@ const Particle = () => {
    return (
       <Container>
          <SubContainer>
-            <Tilt
-               tiltReverse={true}
-               perspective={600}
-               trackOnWindow={true}
-               gyroscope={true}
-            >
-               <img className='BTAimg' src={BTALogo} alt='' />
-            </Tilt>
+            {location !== '/academy' && (
+               <Tilt
+                  tiltReverse={true}
+                  perspective={600}
+                  trackOnWindow={true}
+                  gyroscope={true}
+               >
+                  <img className='BTAimg' src={BTALogo} alt='' />
+               </Tilt>
+            )}
             <Particles
                id='tsparticles'
                init={particlesInit}
@@ -70,7 +84,7 @@ const Particle = () => {
                         value: '#ffffff',
                      },
                      links: {
-                        color: '#f0e68c',
+                        color: blockchainColor,
                         distance: 150,
                         enable: true,
                         opacity: 0.4,

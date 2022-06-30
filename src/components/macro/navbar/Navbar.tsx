@@ -12,14 +12,9 @@ const Navbar = () => {
    const navigate = useNavigate();
    const location = useLocation().pathname;
 
-    if(location === "/academy"){
-      return null
-    }else if (
-      location === '/' ||
-      location === '/dashboard' ||
-      location === '/session' ||
-      location === '/contact'
-   ) {
+   if (location === '/academy') {
+      return null;
+   } else {
       return (
          <NavigationBar>
             <img
@@ -28,20 +23,15 @@ const Navbar = () => {
                alt=''
                className='img'
             />
-            <NoLoggedNavbar />
+            {location === '/' ||
+            location === '/dashboard' ||
+            location === '/session' ||
+            location === '/contact' ? (
+               <NoLoggedNavbar />
+            ) : (
+               <LoggedNavbar />
+            )}
          </NavigationBar>
-      );
-   } else {
-      return (
-         <NavContainer2>
-            <img
-               onClick={() => navigate('/user/profile')}
-               src={BTALogo}
-               alt=''
-               className='img'
-            />
-            <LoggedNavbar />
-         </NavContainer2>
       );
    }
 };

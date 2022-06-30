@@ -11,7 +11,6 @@ import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
-import Graficos from './components/macro/Graficos/Graficos';
 import Academy from './components/macro/Academy/Academy';
 import Password from './components/macro/password/Password';
 /*IMPORT CSS*/
@@ -39,7 +38,6 @@ const App = () => {
          location !== '/session' &&
          location !== '/academy'
       ) {
-         console.log(location);
          navigate('/');
       }
    }, [dispatch, location]);
