@@ -14,6 +14,7 @@ import {
    EditButtonBox,
    Text2,
 } from './styledComponents';
+import Graficos from '../../Graficos/Graficos' 
 
 const ViewProfile = () => {
    const navigate = useNavigate();
@@ -21,6 +22,7 @@ const ViewProfile = () => {
 
    return (
       <SubContainer>
+    
          <Form>
             <TextId>{UI._id.split('').slice(0, 7).join('')}</TextId>
             <Box style={{ display: 'flex' }}>
@@ -56,6 +58,11 @@ const ViewProfile = () => {
                </EditButton>
             </EditButtonBox>
          </Form>
+
+         <Form>
+<Graficos/>
+         </Form>
+         
       </SubContainer>
    );
 };
