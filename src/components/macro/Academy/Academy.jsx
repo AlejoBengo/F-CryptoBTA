@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 /*IMPORT COMPONENTS*/
 import { Particless } from "../../../particles/blockchain/Particle";
-import btn from "./BTARecurso 2.png";
+import uno from "./1.png";
+import dos from "./2 .png";
+import tres from "./3.png";
 /*IMPORT CSS*/
 import {
 	Container,
@@ -14,6 +16,7 @@ import {
 	TextWhite,
 	TextBlue,
 	Paraph,
+    TextBlueBtn,
 } from "./styledComponents";
 
 const Academy = () => {
@@ -31,13 +34,12 @@ const Academy = () => {
 	};
 	return (
 		<Container>
-			<Particless />
-            <ImgContainer>
+			{/* <Particless /> */}
 			<SubContainer>
-				<Paraph>
-					<TextWhite>Horario</TextWhite>
-				</Paraph>
-
+            <ImgContainer>
+            <img src={dos} style={{ width:"100%"}} alt="dos"/>
+            
+{/* 
 				<Paraph>
 					<TextBlue>13:00</TextBlue>
 					<TextWhite>Hora Madrid Lunes</TextWhite>
@@ -69,7 +71,7 @@ const Academy = () => {
 
 				<Paraph>
 					<TextWhite style={{ fontWeight: 100}} >SUBSCRIBETE A LA MASTER CLASS</TextWhite>
-				</Paraph>
+				</Paraph> */}
 				<Input
 					name="nombre"
 					variant="standard"
@@ -86,15 +88,11 @@ const Academy = () => {
 					value={user.email}
 					onChange={handleInputChange}
 				/>
-				<Buttom onClick={handleSubmmit} style={{ width: "100%" }}>
-					<img
-						src={btn}
-						style={{ width: "100%", marginLeft: "0rem" }}
-						aly="btn"
-					/>
-				</Buttom>
-			</SubContainer>
+				<TextBlueBtn onClick={handleSubmmit} style={{ width: "100%" }}>
+                <img src={tres} style={{ width:"100%"}} alt="tres"/>
+				</TextBlueBtn>
             </ImgContainer>
+			</SubContainer>
 		</Container>
 	);
 };
