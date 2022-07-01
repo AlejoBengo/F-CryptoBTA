@@ -13,11 +13,12 @@ export const Container = styled(Box)`
 export const ImgPerfil = styled('img')`
    position: absolute;
    width: 30rem;
-   bottom: 22vh;
+   bottom: -1rem;
    margin-left: 0rem;
 
    @media (max-width: 768px) {
       width: 100%;
+      bottom: 22vh;
    }
 `;
 
@@ -126,7 +127,7 @@ export const FormBox = styled(Box)`
 
 export const Input = styled('input')`
    width: 85%;
-   height: 2.8rem;
+   min-height: 2.8rem;
    border-radius: 0.5rem;
    border: none;
    outline: none;
