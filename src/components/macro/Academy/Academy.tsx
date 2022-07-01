@@ -6,7 +6,7 @@ import Bttn from '../../../imagenes/AcademyButton.png';
 import LuisferPerfil from '../../../imagenes/LuisferPerfil.png';
 import Youtube from '../../../imagenes/YTForAcademy.png';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import { Snackbar } from '@mui/material';
+import { Snackbar, Box } from '@mui/material';
 import {
    Container,
    ImgPerfil,
@@ -54,7 +54,7 @@ const Academy = () => {
          .then((ans) => {
             if (ans) {
                setSubscriptor({ name: '', email: '' });
-               // window.location.replace('https://t.me/Community_Bta');
+               window.location.replace('https://t.me/Community_Bta');
             } else {
                setErrorAlert(true);
                setSubscriptor({ name: '', email: '' });

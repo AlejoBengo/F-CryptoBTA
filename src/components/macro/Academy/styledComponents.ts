@@ -13,14 +13,11 @@ export const Container = styled(Box)`
 export const ImgPerfil = styled('img')`
    position: absolute;
    width: 30rem;
-   // background-color: red;
-   bottom: -10rem;
-   // margin-top: 0rem;
+   bottom: 22vh;
+   margin-left: 0rem;
 
    @media (max-width: 768px) {
-      top: 0;
-      width: 25rem;
-      margin-left: -1rem;
+      width: 100%;
    }
 `;
 
@@ -61,7 +58,8 @@ export const SubContainer = styled(Box)`
       margin-left: 0vw;
       justify-content: space-around;
       margin-top: 0vh;
-      padding-top: 15vh;
+      padding-top: 10vh;
+      padding-bottom: 5vh;
       background-color: rgba(0, 0, 0, 0);
    }
 `;
@@ -128,7 +126,7 @@ export const FormBox = styled(Box)`
 
 export const Input = styled('input')`
    width: 85%;
-   height: 2rem;
+   height: 2.8rem;
    border-radius: 0.5rem;
    border: none;
    outline: none;
