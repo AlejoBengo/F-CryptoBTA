@@ -9,8 +9,8 @@ import App from './App';
 import './index.css';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
-// axios.defaults.baseURL = 'https://protocolobta.onrender.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://protocolobta.onrender.com';
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement

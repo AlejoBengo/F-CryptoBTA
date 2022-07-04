@@ -94,6 +94,7 @@ const Academy = () => {
                   LIVE STREAM
                </WhiteText>
             </ImgContainer>
+            <WhiteText>Regístrate y aprenderás: </WhiteText>
             <BlueText>Temario</BlueText>
             <ListBox>
                <LiBox>
