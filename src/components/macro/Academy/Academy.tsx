@@ -6,13 +6,12 @@ import Bttn from '../../../imagenes/AcademyButton.png';
 import LuisferPerfil from '../../../imagenes/LuisferPerfil.png';
 import Youtube from '../../../imagenes/YTForAcademy.png';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import { Snackbar, Box } from '@mui/material';
+import { Snackbar } from '@mui/material';
 import {
    Container,
    ImgPerfil,
    FreeText,
    SubContainer,
-   Paragraph,
    WhiteText,
    BlueText,
    ListBox,
@@ -54,7 +53,7 @@ const Academy = () => {
          .then((ans) => {
             if (ans) {
                setSubscriptor({ name: '', email: '' });
-               window.location.replace('https://t.me/Community_Bta');
+               window.location.replace('https://t.me/+wcR0I2HUK1hjMDNk');
             } else {
                setErrorAlert(true);
                setSubscriptor({ name: '', email: '' });
@@ -82,12 +81,6 @@ const Academy = () => {
          <ImgPerfil src={LuisferPerfil} alt='' />
          <FreeText>GRATIS</FreeText>
          <SubContainer>
-            <WhiteText>Horario</WhiteText>
-            <Paragraph>
-               <BlueText>13:00</BlueText>
-               <WhiteText>Hora Madrid Lunes</WhiteText>
-               <BlueText>4 de julio</BlueText>
-            </Paragraph>
             <ImgContainer>
                <a
                   href='https://www.youtube.com/c/businessTargetAnalytic'

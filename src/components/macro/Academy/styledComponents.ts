@@ -76,10 +76,6 @@ export const ImgContainer = styled(Box)`
    }
 `;
 
-export const Paragraph = styled(Box)`
-   display: flex;
-`;
-
 export const WhiteText = styled(Typography)`
    font-size: 1.2vw;
    font-weight: bold;

@@ -6,18 +6,14 @@ export const SubContainer = styled(Box)`
    width: 100vw;
    min-height: 100vh;
    display: flex;
-   flex-wrap: wrap;
-   align-items: flex-start;
-   flex-direction: row;
-   align-content: flex-start;
-   justify-content: flex-start;
+   background-color: rgba(0, 0, 0, 0.9);
 `;
 
 export const Form = styled(Box)`
-   width: auto;
-   height: auto;
-   background-color: rgba(0, 0, 0, 0.9);
-   padding: 4rem 0px 0px 2rem;
+   width: 25vw;
+   height: 100vh;
+   padding-top: 6rem;
+   padding-left: 2rem;
 
    @media (max-width: 768px) {
       padding-top: 5rem;
@@ -38,9 +34,9 @@ export const EachTextBox = styled(Box)`
 `;
 export const Title = styled(Typography)`
    color: white;
-   font-size: 2rem;
+   font-size: 1.6rem;
    font-weight: bold;
-   margin-left: 2rem;
+   margin-left: 0.5rem;
 
    @media (max-width: 768px) {
       font-size: 1.6rem;
@@ -53,7 +49,8 @@ export const TextId = styled(Typography)`
    font-size: 1.2rem;
    width: 100%;
    display: flex;
-   justify-content: flex-end;
+   justify-content: flex-start;
+   margin-left: -1.5rem;
 `;
 
 export const Text = styled(Typography)`
