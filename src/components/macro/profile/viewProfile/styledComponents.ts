@@ -6,19 +6,21 @@ export const SubContainer = styled(Box)`
    width: 100vw;
    min-height: 100vh;
    display: flex;
-   justify-content: flex-end;
-   align-items: flex-end;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   flex-direction: row;
+   align-content: flex-start;
+   justify-content: flex-start;
 `;
 
 export const Form = styled(Box)`
-   width: 40vw;
-   height: 100vh;
+   width: auto;
+   height: auto;
    background-color: rgba(0, 0, 0, 0.9);
-   padding: 2rem;
-   padding-top: 6rem;
+   padding: 4rem 0px 0px 2rem;
 
    @media (max-width: 768px) {
-      padding-top: 8rem;
+      padding-top: 5rem;
       width: 100vw;
       height: 100vh;
    }

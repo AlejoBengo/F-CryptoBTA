@@ -28,10 +28,13 @@ ChartJS.register(
   Legend,
   Filler
 );
-
+let pastel={
+  data:[20,15,50,15],
+  labels:['Criptomonedas','Interes Comp Crypto','Mat Prima','Nasdaq']
+}
 const inv = 9500
 const time = 12
-const scores = [ 95, 100 ];
+const scores = [  9500, 9975, 10450, 10925, 11400, 11875, 12350, 12825, 13300, 13775, 14250, 14725, 15200 ];
 const scores2 = [ 9500, 9975, 10450, 10925, 11400, 11875, 12350, 12825, 13300, 13775, 14250, 14725, 15200 ];
 const labels = [0,1,2,3,4,5,6,7,8,9,10,11,12];
 
@@ -78,11 +81,11 @@ const Graficos  = () => {
     };
   }, []);
  const datas = {
-    labels: ['Criptomonedas','Interes Comp Crypto','Mat Prima','Nasdaq'],
+    labels: pastel.labels,
     datasets: [
       {
         label: '# of Votes',
-        data: [20,15,50,15],
+        data:pastel.data,
         backgroundColor: [
           'rgba(255, 99, 132, 0.5)',
           'rgba(54, 162, 235, 0.5)',
@@ -102,6 +105,10 @@ const Graficos  = () => {
       },
     ],
   };
+let datos=[];
+  for(let i=0;i<pastel.data.length;i++){
+    datos.push(`${pastel.labels[i]} ${pastel.data[i]}%`)
+        }
 
   return (
       <Container>
@@ -116,13 +123,19 @@ const Graficos  = () => {
 <Datos>
 
       <Pie data={datas}/>
+      <>
+     {datos && datos.map(e=>(
+
+       <Text>{e}</Text>
+
+     ))}
+      </>
+
 </Datos>
         </SubContainer>
       <SubContainer>
       <Line data={data} options={options} />
       </SubContainer>
-      <Text>Inversion: {inv}</Text>
-      <Text>Inversion: {inv}</Text>
       
       </Container>
  
