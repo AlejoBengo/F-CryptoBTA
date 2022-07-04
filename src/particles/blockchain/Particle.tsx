@@ -27,16 +27,18 @@ const Particle = () => {
    return (
       <Container>
          <SubContainer>
-            {location !== '/academy' && (
-               <Tilt
-                  tiltReverse={true}
-                  perspective={600}
-                  trackOnWindow={true}
-                  gyroscope={true}
-               >
-                  <img className='BTAimg' src={BTALogo} alt='' />
-               </Tilt>
-            )}
+            {location !== '/academy' &&
+               location !== '/session' &&
+               location !== '/dashboard' && (
+                  <Tilt
+                     tiltReverse={true}
+                     perspective={600}
+                     trackOnWindow={true}
+                     gyroscope={true}
+                  >
+                     <img className='BTAimg' src={BTALogo} alt='' />
+                  </Tilt>
+               )}
             <Particles
                id='tsparticles'
                init={particlesInit}

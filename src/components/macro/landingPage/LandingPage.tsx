@@ -5,6 +5,7 @@ import Particle from '../../../particles/blockchain/Particle';
 import ContactView from '../../micro/landingPage/ContactView/ContactView';
 import Login from '../session/login/Login';
 import Academy from '../Academy/Academy';
+import Dashboard from '../../micro/landingPage/Dashboard/Dashboard';
 /*IMPORT CSS*/
 import { Container, SubContainer } from './styledComponents';
 
@@ -19,6 +20,8 @@ const LandingPage = () => {
                <ContactView />
             ) : page === 'session' ? (
                <Login />
+            ) : page === 'dashboard' ? (
+               <Dashboard />
             ) : (
                page === 'academy' && <Academy />
             )}
