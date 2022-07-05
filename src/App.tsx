@@ -11,7 +11,7 @@ import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
 import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
-import Academy from './components/macro/Academy/Academy';
+import NewInvestmentDetail from './components/macro/newInvestmentDetail/newInvestmentDetail';
 import Password from './components/macro/password/Password';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
@@ -51,6 +51,7 @@ const App = () => {
          <Navbar />
          <Box>
             <Routes>
+               <Route path='/new/InvestmentDetail' element={<NewInvestmentDetail />} />
                <Route path='/' element={<LandingPage />} />
                <Route path='/:page' element={<LandingPage />} />
                <Route path='/user/newuser' element={<NewUserForm />} />
