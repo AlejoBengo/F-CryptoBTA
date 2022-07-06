@@ -94,8 +94,12 @@ const Academy = () => {
                   LIVE STREAM
                </WhiteText>
             </ImgContainer>
-            <WhiteText>Regístrate y aprenderás: </WhiteText>
-            <BlueText>Temario</BlueText>
+            <WhiteText
+               style={{ textAlign: 'center', textJustify: 'inter-word' }}
+            >
+               REGÍSTRATE Y APRENDERÁS TODO SOBRE:{' '}
+            </WhiteText>
+            {/* <BlueText>Temario</BlueText> */}
             <ListBox>
                <LiBox>
                   <Li />

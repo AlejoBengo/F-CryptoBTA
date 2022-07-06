@@ -1,5 +1,5 @@
 /*IMPORT UTILITIES*/
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 /*IMPORT COMPONENTS*/
 import EachCard from './Card';
 /*IMPORT CSS*/
@@ -9,6 +9,8 @@ import { InvestValue } from './utilities';
 
 const Dashboard = () => {
    const [investValue, setInvestValue] = useState<Array<InvestValue>>([]);
+
+   useEffect(() => {}, []);
 
    return (
       <Container>

@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-// import bkg from './bkg.png';
 /*----------------------------------------------------------------------------*/
 
 export const Container = styled(Box)`
@@ -36,7 +35,9 @@ export const FreeText = styled(Typography)`
    transform: rotate(25deg);
 
    @media (max-width: 768px) {
-      font-size: 3rem;
+      font-size: 2rem;
+      right: 1rem;
+      top: 20rem;
    }
 `;
 
@@ -59,7 +60,7 @@ export const SubContainer = styled(Box)`
       margin-left: 0vw;
       justify-content: space-around;
       margin-top: 0vh;
-      padding-top: 10vh;
+      padding-top: 0vh;
       padding-bottom: 5vh;
       background-color: rgba(0, 0, 0, 0);
    }
