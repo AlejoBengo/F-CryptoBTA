@@ -3,21 +3,6 @@ export const config = { inputProps: { style: { color: 'white' } } };
 
 export const validator = (data: NewUserData) => {
    let errors = [];
-   if (typeof data.investment_startup !== 'string') {
-      errors.push(`investment_startup debe ser texto.`);
-   }
-   if (typeof data.investment_end !== 'string') {
-      errors.push('investment_end debe ser texto.');
-   }
-   if (typeof data.investment !== 'string') {
-      errors.push('investment debe ser texto.');
-   }
-   if (typeof data.total_investment !== 'string') {
-      errors.push('total_investment debe ser texto.');
-   }
-   if (typeof data.withdrawal_method !== 'string') {
-      errors.push('withdrawal_method debe ser texto.');
-   }
    if (typeof data.name !== 'string') {
       errors.push('name debe ser texto.');
    }
@@ -41,12 +26,6 @@ export const validator = (data: NewUserData) => {
    }
    if (typeof data.phone_number !== 'number') {
       errors.push('phone_number debe ser un número.');
-   }
-   if (typeof data.profit_benefit !== 'number') {
-      errors.push('profit_benefit debe ser un número.');
-   }
-   if (typeof data.estimated_profit !== 'number') {
-      errors.push('estimated_profit debe ser un número.');
    }
    return errors;
 };

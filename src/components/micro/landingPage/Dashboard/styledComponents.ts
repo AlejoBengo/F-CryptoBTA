@@ -12,12 +12,35 @@ export const Container = styled(Box)`
 export const SubContainer = styled(Box)`
    width: 50vw;
    height: 88.5vh;
-   background-color: yellow;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 1rem;
+`;
+
+export const SubContainer2 = styled(Box)`
+   width: 50vw;
+   height: 88.5vh;
+`;
+
+export const TitleBox = styled(Box)`
+   width: 50vw;
+   height: 7vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`;
+
+export const Title = styled(Typography)`
+   font-family: Helvetica;
+   font-size: 2rem;
+   color: white;
+   font-weight: bold;
 `;
 
 export const ActivityDetailBox = styled(Box)`
    width: 50vw;
-   height: 88.5vh;
+   height: 81.5vh;
    padding: 1rem;
    display: flex;
    flex-wrap: wrap;
@@ -52,4 +75,8 @@ export const CoinName = styled(Typography)`
    font-size: 1rem;
    color: white;
    font-weight: 400;
+`;
+
+export const TotalBox = styled(Box)`
+   width: 100%;
 `;

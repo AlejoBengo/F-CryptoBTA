@@ -2,7 +2,6 @@
 import { useAppSelector } from '../../../../globalStore/store/hooks';
 import { useNavigate } from 'react-router-dom';
 /*IMPORT COMPONENTS*/
-import Graficos from '../../Graficos/Graficos';
 /*IMPORT CSS*/
 import { Box } from '@mui/material';
 import {
@@ -58,7 +57,6 @@ const ViewProfile = () => {
                </EditButton>
             </EditButtonBox>
          </Form>
-         <Graficos />
       </SubContainer>
    );
 };

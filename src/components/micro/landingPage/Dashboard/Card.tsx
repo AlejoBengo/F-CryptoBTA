@@ -1,7 +1,9 @@
+/*IMPORT CSS*/
 import { CardBox, CoinName, CoinLogo, CoinNumber } from './styledComponents';
-import { UtilData } from './utilities';
+/*IMPORT DATA*/
+import { CardOptionUtilData } from '../../../../globalStore/reducers/InvestingSlice/utilities';
 
-const EachCard = ({ name, picture, value }: UtilData) => {
+const EachCard = ({ name, picture, value }: CardOptionUtilData) => {
    return (
       <CardBox>
          <CoinNumber>{value}%</CoinNumber>

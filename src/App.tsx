@@ -9,7 +9,6 @@ import { setUserData } from './globalStore/reducers/UserSlice/UserSlice';
 /*IMPORT COMPONENTS*/
 import LandingPage from './components/macro/landingPage/LandingPage';
 import Navbar from './components/macro/navbar/Navbar';
-import NewUserForm from './components/macro/newUserForm/NewUserForm';
 import Profile from './components/macro/profile/Profile';
 import NewInvestmentDetail from './components/macro/newInvestmentDetail/newInvestmentDetail';
 import Password from './components/macro/password/Password';
@@ -57,7 +56,6 @@ const App = () => {
                />
                <Route path='/' element={<LandingPage />} />
                <Route path='/:page' element={<LandingPage />} />
-               <Route path='/user/newuser' element={<NewUserForm />} />
                <Route path='/user/profile' element={<Profile />} />
                <Route path='/user/profile/:id' element={<Profile />} />
                <Route path='/user/password' element={<Password />} />
