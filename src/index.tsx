@@ -8,8 +8,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import axios from 'axios';
-// axios.defaults.baseURL = 'http://localhost:3001';
-axios.defaults.baseURL = 'https://backcrypto.onrender.com';
+axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'https://backcrypto.onrender.com';
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement

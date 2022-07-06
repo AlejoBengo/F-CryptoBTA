@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NewUserData, UserDataForLogin, ChangePasswordData } from './utilities';
+import { NewUserData, UserDataForLogin, ChangePasswordData,DetailModel } from './utilities';
 
 export const postNewUser = async (data: NewUserData) => {
    try {
@@ -12,6 +12,30 @@ export const postNewUser = async (data: NewUserData) => {
       } else {
          return false;
       }
+   } catch (error) {
+      return false;
+   }
+};
+export const postNewDetailModel= async (data: DetailModel) => {
+   try {
+      const processCompleted = (await axios.post('/InvestingDetail/post', data)).data
+         .name
+         ? true
+         : false;
+      if (processCompleted) {
+         return true;
+      } else {
+         return false;
+      }
+   } catch (error) {
+      return false;
+   }
+};
+export const getNewDetailModel= async () => {
+   try {
+      const processCompleted= (await axios.get('/InvestingDetail/get')).data
+      return processCompleted
+
    } catch (error) {
       return false;
    }
