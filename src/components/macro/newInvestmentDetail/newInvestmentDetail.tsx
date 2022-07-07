@@ -122,7 +122,7 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 		});
 	};
 	let initialValue = 0;
-	const sumWithInitial = investings.map((e) => (initialValue += e.value));
+	const sumWithInitial = allInvestingOptions.map((e) => (initialValue += e.value));
 	
 	return (
 		<Container>
@@ -232,7 +232,8 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 								color="success"
 								cursor="pointer"
 								onClick={() => {
-									console.log(setNewUserData(e));
+									setNewUserData(e);
+									window.scroll(0,0)
 								}}
 							/>
 							<DeleteIcon
