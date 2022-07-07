@@ -1,10 +1,14 @@
 /*IMPORT UTILITIES*/
-import { useAppDispatch,useAppSelector } from "../../../globalStore/store/hooks"; 
+import {
+	useAppDispatch,
+	useAppSelector,
+} from "../../../globalStore/store/hooks";
 import { useEffect, useState } from "react";
 import {
 	getAllInvestingOptions,
 	postInvestingOption,
-	editInvestingOption
+	editInvestingOption,
+	deleteInvestingOption,
 } from "../../../globalStore/reducers/InvestingSlice/NoiseActions";
 /*IMPORT CSS*/
 import { Select, Switch, Button, MenuItem, Box } from "@mui/material";
@@ -28,8 +32,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import { setAllInvestingOptions } from "../../../globalStore/reducers/InvestingSlice/InvestingSlice";
 
 const NewInvestmentDetail = () => {
-const dispatch = useAppDispatch();
-const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allInvestingOptions)
+	const dispatch = useAppDispatch();
+	const allInvestingOptions = useAppSelector(
+		(state) => state.InvestingSlice.allInvestingOptions
+	);
 	const [investings, setinvestings] = useState<Array<InvestingOption>>([
 		{
 			_id: "",
@@ -40,6 +46,7 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 			picture: "",
 		},
 	]);
+	const [aux, setAux] = useState<boolean>(true);
 	const [newUserData, setNewUserData] = useState<InvestingOption>({
 		_id: "",
 		name: "",
@@ -53,11 +60,11 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 		getAllInvestingOptions()
 			.then((res) => {
 				if (res) {
-					dispatch(setAllInvestingOptions(res))
+					dispatch(setAllInvestingOptions(res));
 				}
 			})
 			.catch((err) => console.log("la puta madre all boys"));
-	}, [allInvestingOptions]);
+	}, [aux]);
 
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -96,6 +103,7 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 			symbol: "",
 			picture: "",
 		});
+		setAux(!aux)
 	};
 	const handleSubmmitedit = (event: React.MouseEvent<HTMLButtonElement>) => {
 		console.log(newUserData);
@@ -120,10 +128,13 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 			symbol: "",
 			picture: "",
 		});
+		setAux(!aux)
 	};
 	let initialValue = 0;
-	const sumWithInitial = allInvestingOptions.map((e) => (initialValue += e.value));
-	
+	const sumWithInitial = allInvestingOptions.map(
+		(e) => (initialValue += e.value)
+	);
+
 	return (
 		<Container>
 			<InputBox>
@@ -182,18 +193,20 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 					<MenuItem value={"interescomp"}>interescomp</MenuItem>
 				</Select>
 				<Button
-						onClick={() =>setNewUserData({
+					onClick={() =>
+						setNewUserData({
 							_id: "",
 							name: "",
 							value: 0,
 							type: "crypto",
 							symbol: "",
 							picture: "",
-						})}
-						style={{ backgroundColor: "yellow", width: "5rem" }}
-					>
-						CLEAN
-					</Button>
+						})
+					}
+					style={{ backgroundColor: "yellow", width: "5rem" }}
+				>
+					CLEAN
+				</Button>
 				{!newUserData._id && (
 					<Button
 						onClick={handleSubmmit}
@@ -202,9 +215,7 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 						SAVE
 					</Button>
 				)}
-				 
-					
-				
+
 				{newUserData._id && (
 					<Button
 						onClick={handleSubmmitedit}
@@ -233,14 +244,15 @@ const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allIn
 								cursor="pointer"
 								onClick={() => {
 									setNewUserData(e);
-									window.scroll(0,0)
+									window.scroll(0, 0);
 								}}
 							/>
 							<DeleteIcon
 								color="success"
 								cursor="pointer"
 								onClick={() => {
-									console.log(e);
+									deleteInvestingOption(e);
+									setAux(!aux)
 								}}
 							/>
 						</CoinBox>
