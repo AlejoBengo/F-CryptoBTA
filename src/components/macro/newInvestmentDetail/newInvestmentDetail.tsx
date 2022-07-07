@@ -1,8 +1,10 @@
 /*IMPORT UTILITIES*/
+import { useAppDispatch,useAppSelector } from "../../../globalStore/store/hooks"; 
 import { useEffect, useState } from "react";
 import {
 	getAllInvestingOptions,
 	postInvestingOption,
+	editInvestingOption
 } from "../../../globalStore/reducers/InvestingSlice/NoiseActions";
 /*IMPORT CSS*/
 import { Select, Switch, Button, MenuItem, Box } from "@mui/material";
@@ -23,8 +25,11 @@ import { InvestingOption } from "../../../globalStore/reducers/InvestingSlice/ut
 import { config, validator } from "./utilities";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { setAllInvestingOptions } from "../../../globalStore/reducers/InvestingSlice/InvestingSlice";
 
 const NewInvestmentDetail = () => {
+const dispatch = useAppDispatch();
+const allInvestingOptions = useAppSelector((state) => state.InvestingSlice.allInvestingOptions)
 	const [investings, setinvestings] = useState<Array<InvestingOption>>([
 		{
 			_id: "",
@@ -48,11 +53,11 @@ const NewInvestmentDetail = () => {
 		getAllInvestingOptions()
 			.then((res) => {
 				if (res) {
-					setinvestings(res);
+					dispatch(setAllInvestingOptions(res))
 				}
 			})
 			.catch((err) => console.log("la puta madre all boys"));
-	}, []);
+	}, [allInvestingOptions]);
 
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -92,9 +97,33 @@ const NewInvestmentDetail = () => {
 			picture: "",
 		});
 	};
+	const handleSubmmitedit = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log(newUserData);
+		const allow = validator(newUserData);
+		if (!allow.length) {
+			editInvestingOption(newUserData)
+				.then((ans) => {
+					console.log(ans);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		} else {
+			console.log(allow);
+		}
+
+		setNewUserData({
+			_id: "",
+			name: "",
+			value: 0,
+			type: "crypto",
+			symbol: "",
+			picture: "",
+		});
+	};
 	let initialValue = 0;
 	const sumWithInitial = investings.map((e) => (initialValue += e.value));
-	console.log(newUserData);
+	
 	return (
 		<Container>
 			<InputBox>
@@ -178,7 +207,7 @@ const NewInvestmentDetail = () => {
 				
 				{newUserData._id && (
 					<Button
-						onClick={handleSubmmit}
+						onClick={handleSubmmitedit}
 						style={{ backgroundColor: "yellow", width: "5rem" }}
 					>
 						EDIT
@@ -189,8 +218,8 @@ const NewInvestmentDetail = () => {
 				<CoinName>{initialValue}%</CoinName>
 			</InputBox>
 
-			{investings.length > 0 &&
-				investings.map((e, index) => {
+			{allInvestingOptions.length > 0 &&
+				allInvestingOptions.map((e, index) => {
 					return (
 						<CoinBox key={index}>
 							<CoinLogo src={e.picture} alt={e.picture} />
