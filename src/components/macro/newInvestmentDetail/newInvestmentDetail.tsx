@@ -92,12 +92,9 @@ const NewInvestmentDetail = () => {
 			picture: "",
 		});
 	};
-	console.log(investings);
 	let initialValue = 0;
 	const sumWithInitial = investings.map((e) => (initialValue += e.value));
-
-	console.log(sumWithInitial);
-	console.log(initialValue);
+	console.log(newUserData);
 	return (
 		<Container>
 			<InputBox>
@@ -156,11 +153,37 @@ const NewInvestmentDetail = () => {
 					<MenuItem value={"interescomp"}>interescomp</MenuItem>
 				</Select>
 				<Button
-					onClick={handleSubmmit}
-					style={{ backgroundColor: "yellow", width: "5rem" }}
-				>
-					SAVE
-				</Button>
+						onClick={() =>setNewUserData({
+							_id: "",
+							name: "",
+							value: 0,
+							type: "crypto",
+							symbol: "",
+							picture: "",
+						})}
+						style={{ backgroundColor: "yellow", width: "5rem" }}
+					>
+						CLEAN
+					</Button>
+				{!newUserData._id && (
+					<Button
+						onClick={handleSubmmit}
+						style={{ backgroundColor: "yellow", width: "5rem" }}
+					>
+						SAVE
+					</Button>
+				)}
+				 
+					
+				
+				{newUserData._id && (
+					<Button
+						onClick={handleSubmmit}
+						style={{ backgroundColor: "yellow", width: "5rem" }}
+					>
+						EDIT
+					</Button>
+				)}
 			</InputBox>
 			<InputBox style={{ justifyContent: "flex-end" }}>
 				<CoinName>{initialValue}%</CoinName>
@@ -180,14 +203,14 @@ const NewInvestmentDetail = () => {
 								color="success"
 								cursor="pointer"
 								onClick={() => {
-									console.log(e._id);
+									console.log(setNewUserData(e));
 								}}
 							/>
 							<DeleteIcon
 								color="success"
 								cursor="pointer"
 								onClick={() => {
-									console.log(e._id);
+									console.log(e);
 								}}
 							/>
 						</CoinBox>
