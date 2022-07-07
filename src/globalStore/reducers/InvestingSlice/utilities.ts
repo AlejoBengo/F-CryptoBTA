@@ -1,4 +1,5 @@
 export interface InvestingOption {
+   _id:string;
    name: string;
    value: number;
    type: string;
