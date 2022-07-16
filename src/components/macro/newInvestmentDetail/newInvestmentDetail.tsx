@@ -1,8 +1,14 @@
 /*IMPORT UTILITIES*/
+import {
+	useAppDispatch,
+	useAppSelector,
+} from "../../../globalStore/store/hooks";
 import { useEffect, useState } from "react";
 import {
 	getAllInvestingOptions,
 	postInvestingOption,
+	editInvestingOption,
+	deleteInvestingOption,
 } from "../../../globalStore/reducers/InvestingSlice/NoiseActions";
 /*IMPORT CSS*/
 import { Select, Switch, Button, MenuItem, Box } from "@mui/material";
@@ -23,8 +29,13 @@ import { InvestingOption } from "../../../globalStore/reducers/InvestingSlice/ut
 import { config, validator } from "./utilities";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { setAllInvestingOptions } from "../../../globalStore/reducers/InvestingSlice/InvestingSlice";
 
 const NewInvestmentDetail = () => {
+	const dispatch = useAppDispatch();
+	const allInvestingOptions = useAppSelector(
+		(state) => state.InvestingSlice.allInvestingOptions
+	);
 	const [investings, setinvestings] = useState<Array<InvestingOption>>([
 		{
 			_id: "",
@@ -35,6 +46,7 @@ const NewInvestmentDetail = () => {
 			picture: "",
 		},
 	]);
+	const [aux, setAux] = useState<boolean>(true);
 	const [newUserData, setNewUserData] = useState<InvestingOption>({
 		_id: "",
 		name: "",
@@ -48,11 +60,11 @@ const NewInvestmentDetail = () => {
 		getAllInvestingOptions()
 			.then((res) => {
 				if (res) {
-					setinvestings(res);
+					dispatch(setAllInvestingOptions(res));
 				}
 			})
 			.catch((err) => console.log("la puta madre all boys"));
-	}, []);
+	}, [aux]);
 
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -91,13 +103,38 @@ const NewInvestmentDetail = () => {
 			symbol: "",
 			picture: "",
 		});
+		setAux(!aux)
 	};
-	console.log(investings);
-	let initialValue = 0;
-	const sumWithInitial = investings.map((e) => (initialValue += e.value));
+	const handleSubmmitedit = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log(newUserData);
+		const allow = validator(newUserData);
+		if (!allow.length) {
+			editInvestingOption(newUserData)
+				.then((ans) => {
+					console.log(ans);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		} else {
+			console.log(allow);
+		}
 
-	console.log(sumWithInitial);
-	console.log(initialValue);
+		setNewUserData({
+			_id: "",
+			name: "",
+			value: 0,
+			type: "crypto",
+			symbol: "",
+			picture: "",
+		});
+		setAux(!aux)
+	};
+	let initialValue = 0;
+	const sumWithInitial = allInvestingOptions.map(
+		(e) => (initialValue += e.value)
+	);
+
 	return (
 		<Container>
 			<InputBox>
@@ -156,18 +193,44 @@ const NewInvestmentDetail = () => {
 					<MenuItem value={"interescomp"}>interescomp</MenuItem>
 				</Select>
 				<Button
-					onClick={handleSubmmit}
+					onClick={() =>
+						setNewUserData({
+							_id: "",
+							name: "",
+							value: 0,
+							type: "crypto",
+							symbol: "",
+							picture: "",
+						})
+					}
 					style={{ backgroundColor: "yellow", width: "5rem" }}
 				>
-					SAVE
+					CLEAN
 				</Button>
+				{!newUserData._id && (
+					<Button
+						onClick={handleSubmmit}
+						style={{ backgroundColor: "yellow", width: "5rem" }}
+					>
+						SAVE
+					</Button>
+				)}
+
+				{newUserData._id && (
+					<Button
+						onClick={handleSubmmitedit}
+						style={{ backgroundColor: "yellow", width: "5rem" }}
+					>
+						EDIT
+					</Button>
+				)}
 			</InputBox>
 			<InputBox style={{ justifyContent: "flex-end" }}>
 				<CoinName>{initialValue}%</CoinName>
 			</InputBox>
 
-			{investings.length > 0 &&
-				investings.map((e, index) => {
+			{allInvestingOptions.length > 0 &&
+				allInvestingOptions.map((e, index) => {
 					return (
 						<CoinBox key={index}>
 							<CoinLogo src={e.picture} alt={e.picture} />
@@ -180,14 +243,16 @@ const NewInvestmentDetail = () => {
 								color="success"
 								cursor="pointer"
 								onClick={() => {
-									console.log(e._id);
+									setNewUserData(e);
+									window.scroll(0, 0);
 								}}
 							/>
 							<DeleteIcon
 								color="success"
 								cursor="pointer"
 								onClick={() => {
-									console.log(e._id);
+									deleteInvestingOption(e);
+									setAux(!aux)
 								}}
 							/>
 						</CoinBox>
